@@ -2,6 +2,4 @@
 
 ## **HELLO WORLD**
 
-<doctype html!>
-
 ![alt text](image.png)
