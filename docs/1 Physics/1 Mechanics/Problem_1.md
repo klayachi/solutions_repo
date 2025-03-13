@@ -3,7 +3,8 @@
 # Investigating the Range as a Function of the Angle of Projection
 
 
-![alt text](projectile_motion.gif)
+![alt text](projectile_all_angles_slow.gif)
+
 
 ### Equations of Motion
 - **Horizontal displacement:**
