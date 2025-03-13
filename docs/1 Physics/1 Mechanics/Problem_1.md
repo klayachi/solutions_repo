@@ -3,7 +3,9 @@
 # Investigating the Range as a Function of the Angle of Projection
 
 
-![alt text](projectile_all_angles_slow.gif)
+<video controls src="projectile_motion_all_angles.mp4" title="projectile motion all angles 2D"></video>
+
+<video controls src="projectile_motion_3d_super_slow.mp4" title="projectile motion 3D"></video>
 
 
 ## 1. Theoretical Foundation
