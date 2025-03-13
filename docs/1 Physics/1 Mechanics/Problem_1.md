@@ -1,5 +1,8 @@
 # Investigating the Range as a Function of the Angle of Projection
 
+
+![alt text](projectile_motion.gif)
+
 ## 1. Theoretical Foundation
 Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle \( \theta \) with initial velocity \( v_0 \) are derived from kinematic equations:
 
