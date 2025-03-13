@@ -174,28 +174,31 @@
 <h1 id="problem-1">Problem 1</h1>
 <h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
 <p><img alt="alt text" src="../projectile_motion.gif"/></p>
-<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
-<p>Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle <span class="arithmatex">\( \theta \)</span> with initial velocity <span class="arithmatex">\( v_0 \)</span> are derived from kinematic equations:</p>
 <h3 id="equations-of-motion">Equations of Motion</h3>
 <ul>
 <li><strong>Horizontal displacement:</strong>
-<code>math
-  x(t) = v_0 \cos(\theta) t</code></li>
+  $$
+  x(t) = v_0 \cos(\theta) t
+  $$</li>
 <li><strong>Vertical displacement:</strong>
-<code>math
-  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2</code></li>
+  $$
+  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+  $$</li>
 </ul>
 <p>To find the range <span class="arithmatex">\( R \)</span>, we determine the time of flight <span class="arithmatex">\( T_f \)</span>:
-  <code>math
-  T_f = \frac{2 v_0 \sin(\theta)}{g}</code></p>
+  $$
+  T_f = \frac{2 v_0 \sin(\theta)}{g}
+  $$</p>
 <p>Substituting into the horizontal displacement:
-  <code>math
-  R = \frac{v_0^2 \sin(2\theta)}{g}</code></p>
+  $$
+  R = \frac{v_0^2 \sin(2\theta)}{g}
+  $$</p>
 <h2 id="2-analysis-of-the-range">2. Analysis of the Range</h2>
 <ul>
 <li>The maximum range occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span>, yielding:
-  <code>math
-  R_{\max} = \frac{v_0^2}{g}</code></li>
+  $$
+  R_{\max} = \frac{v_0^2}{g}
+  $$</li>
 <li><strong>Gravity Influence:</strong> Lower gravity increases range (e.g., Moon vs. Earth).</li>
 <li><strong>Velocity Impact:</strong> Higher velocity increases range quadratically.</li>
 </ul>
@@ -236,6 +239,7 @@ plt.grid()
 plt.show()
 
 # Live Interactive Simulation with Pygame
+
 def live_simulation():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
