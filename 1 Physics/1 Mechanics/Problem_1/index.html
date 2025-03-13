@@ -48,8 +48,6 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#hello-world">HELLO WORLD</a>
-</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -174,8 +172,119 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<h2 id="hello-world"><strong>HELLO WORLD</strong></h2>
-<p><img alt="alt text" src="../image.png"/></p>
+<h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
+<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
+<p>Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle <span class="arithmatex">\( \theta \)</span> with initial velocity <span class="arithmatex">\( v_0 \)</span> are derived from kinematic equations:</p>
+<h3 id="equations-of-motion">Equations of Motion</h3>
+<ul>
+<li><strong>Horizontal displacement:</strong>
+<code>math
+  x(t) = v_0 \cos(\theta) t</code></li>
+<li><strong>Vertical displacement:</strong>
+<code>math
+  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2</code></li>
+</ul>
+<p>To find the range <span class="arithmatex">\( R \)</span>, we determine the time of flight <span class="arithmatex">\( T_f \)</span>:
+  <code>math
+  T_f = \frac{2 v_0 \sin(\theta)}{g}</code></p>
+<p>Substituting into the horizontal displacement:
+  <code>math
+  R = \frac{v_0^2 \sin(2\theta)}{g}</code></p>
+<h2 id="2-analysis-of-the-range">2. Analysis of the Range</h2>
+<ul>
+<li>The maximum range occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span>, yielding:
+  <code>math
+  R_{\max} = \frac{v_0^2}{g}</code></li>
+<li><strong>Gravity Influence:</strong> Lower gravity increases range (e.g., Moon vs. Earth).</li>
+<li><strong>Velocity Impact:</strong> Higher velocity increases range quadratically.</li>
+</ul>
+<h2 id="3-practical-applications">3. Practical Applications</h2>
+<ul>
+<li><strong>Sports:</strong> Ball trajectories in football and golf.</li>
+<li><strong>Engineering:</strong> Optimizing projectile launch angles.</li>
+<li><strong>Astrophysics:</strong> Calculating satellite orbits and probes.</li>
+</ul>
+<h2 id="4-implementation">4. Implementation</h2>
+<p>The following Python script simulates projectile range across different angles, velocities, and gravity values.</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+import pygame
+import math
+from scipy.optimize import fsolve
+
+def projectile_range(theta, v0, g=9.81):
+    """Computes the range of a projectile given initial velocity and launch angle."""
+    theta_rad = np.radians(theta)
+    return (v0 ** 2 * np.sin(2 * theta_rad)) / g
+
+# Simulation parameters
+angles = np.linspace(0, 90, 100)
+v0_values = [10, 20, 30]  # Different initial velocities
+g_values = [9.81, 1.62, 24.79]  # Earth, Moon, Jupiter
+
+# Plot results
+plt.figure(figsize=(10, 6))
+for v0 in v0_values:
+    ranges = [projectile_range(theta, v0) for theta in angles]
+    plt.plot(angles, ranges, label=f'v0 = {v0} m/s (Earth)')
+
+plt.xlabel('Launch Angle (degrees)')
+plt.ylabel('Range (m)')
+plt.title('Projectile Range as a Function of Angle')
+plt.legend()
+plt.grid()
+plt.show()
+
+# Live Simulation with Pygame
+def live_simulation():
+    pygame.init()
+    screen = pygame.display.set_mode((800, 600))
+    pygame.display.set_caption("Projectile Motion Simulation")
+    clock = pygame.time.Clock()
+
+    v0 = 50  # Initial velocity
+    angle = 45  # Launch angle in degrees
+    g = 9.81  # Gravity
+    dt = 0.1  # Time step
+
+    x, y = 50, 500  # Initial position
+    vx = v0 * math.cos(math.radians(angle))
+    vy = -v0 * math.sin(math.radians(angle))
+
+    running = True
+    while running:
+        screen.fill((0, 0, 0))
+        pygame.draw.circle(screen, (255, 0, 0), (int(x), int(y)), 5)
+        pygame.display.flip()
+
+        x += vx * dt
+        vy += g * dt
+        y += vy * dt
+
+        if y &gt; 500:
+            running = False
+
+        clock.tick(60)
+
+    pygame.quit()
+
+if __name__ == "__main__":
+    live_simulation()
+</code></pre>
+<h2 id="5-limitations-and-future-work">5. Limitations and Future Work</h2>
+<ul>
+<li><strong>No Air Resistance:</strong> Real-world projectiles experience drag.</li>
+<li><strong>Uneven Terrain:</strong> Actual launch sites may not be level.</li>
+<li><strong>Wind Effects:</strong> Wind can significantly alter trajectories.</li>
+</ul>
+<h3 id="future-enhancements">Future Enhancements</h3>
+<ul>
+<li>Incorporate drag and wind resistance.</li>
+<li>Extend to 3D simulations with varying wind conditions.</li>
+<li>Use numerical methods like Runge-Kutta for complex cases.</li>
+</ul>
+<hr/>
+<p>This report provides a structured analysis of projectile motion and a computational approach to visualize its behavior, including an interactive live simulation using Pygame.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
