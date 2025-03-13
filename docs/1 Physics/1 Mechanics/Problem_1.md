@@ -6,6 +6,23 @@
 ![alt text](projectile_all_angles_slow.gif)
 
 
+## 1. Theoretical Foundation
+Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle \( \theta \) with initial velocity \( v_0 \) are derived from kinematic equations:
+
+### Differential Equation of Motion
+The motion of a projectile is governed by the second-order differential equations:
+  $$
+  \frac{d^2x}{dt^2} = 0, \quad \frac{d^2y}{dt^2} = -g
+  $$
+Integrating once:
+  $$
+  \frac{dx}{dt} = v_0 \cos(\theta), \quad \frac{dy}{dt} = v_0 \sin(\theta) - g t
+  $$
+Integrating again:
+  $$
+  x(t) = v_0 \cos(\theta) t, \quad y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+  $$
+
 ### Equations of Motion
 - **Horizontal displacement:**
   $$
@@ -40,98 +57,97 @@ Substituting into the horizontal displacement:
 - **Astrophysics:** Calculating satellite orbits and probes.
 
 ## 4. Implementation
-The following Python script simulates projectile range across different angles, velocities, and gravity values.
+The following Python script implements additional simulations based on professor's notes:
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
-import pygame
-import math
 
-def projectile_range(theta, v0, g=9.81):
-    """Computes the range of a projectile given initial velocity and launch angle."""
-    theta_rad = np.radians(theta)
-    return (v0 ** 2 * np.sin(2 * theta_rad)) / g
+def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
+    angle_rad = np.radians(angle)
+    vx = v0 * np.cos(angle_rad)
+    vy = v0 * np.sin(angle_rad)
+    x, y = [0], [h]
+    t = 0
+    while y[-1] >= 0:
+        t += dt
+        x.append(vx * t)
+        y.append(h + vy * t - 0.5 * g * t**2)
+    return np.array(x), np.array(y)
 
-# Simulation parameters
-angles = np.linspace(0, 90, 100)
-v0_values = [10, 20, 30]  # Different initial velocities
-g_values = [9.81, 1.62, 24.79]  # Earth, Moon, Jupiter
-
-# Plot results
-plt.figure(figsize=(10, 6))
-for v0 in v0_values:
-    ranges = [projectile_range(theta, v0) for theta in angles]
-    plt.plot(angles, ranges, label=f'v0 = {v0} m/s (Earth)')
-
-plt.xlabel('Launch Angle (degrees)')
-plt.ylabel('Range (m)')
-plt.title('Projectile Range as a Function of Angle')
+# 1. Three different velocities on the same plot
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+for v0 in [10, 20, 30]:
+    x, y = projectile_trajectory(v0, 45)
+    plt.plot(x, y, label=f'v0 = {v0} m/s')
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion with Different Velocities")
 plt.legend()
 plt.grid()
 plt.show()
 
-# Live Interactive Simulation with Pygame
+# 2. Same initial conditions on three different planets
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+planets = {"Earth": 9.81, "Moon": 1.62, "Jupiter": 24.79}
+for planet, g in planets.items():
+    x, y = projectile_trajectory(20, 45, g)
+    plt.plot(x, y, label=planet)
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion on Different Planets")
+plt.legend()
+plt.grid()
+plt.show()
 
-def live_simulation():
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("Interactive Projectile Motion")
-    clock = pygame.time.Clock()
-    font = pygame.font.Font(None, 36)
-    
-    v0 = 50  # Initial velocity
-    angle = 45  # Launch angle in degrees
-    g = 9.81  # Gravity
-    dt = 0.1  # Time step
-    
-    running = True
-    while running:
-        screen.fill((0, 0, 0))
-        
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    angle = min(angle + 5, 90)
-                elif event.key == pygame.K_DOWN:
-                    angle = max(angle - 5, 0)
-                elif event.key == pygame.K_RIGHT:
-                    v0 += 5
-                elif event.key == pygame.K_LEFT:
-                    v0 = max(v0 - 5, 5)
-        
-        x, y = 50, 500  # Initial position
-        vx = v0 * math.cos(math.radians(angle))
-        vy = -v0 * math.sin(math.radians(angle))
-        
-        while y < 500:
-            pygame.draw.circle(screen, (255, 0, 0), (int(x), int(y)), 5)
-            pygame.display.flip()
-            x += vx * dt
-            vy += g * dt
-            y += vy * dt
-            clock.tick(60)
-        
-        angle_text = font.render(f"Angle: {angle}°", True, (255, 255, 255))
-        v0_text = font.render(f"Velocity: {v0} m/s", True, (255, 255, 255))
-        screen.blit(angle_text, (10, 10))
-        screen.blit(v0_text, (10, 40))
-        pygame.display.flip()
-    
-    pygame.quit()
+# 3. Different heights
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+for h in [0, 10, 20]:
+    x, y = projectile_trajectory(20, 45, 9.81, h)
+    plt.plot(x, y, label=f'Height = {h}m')
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion with Different Initial Heights")
+plt.legend()
+plt.grid()
+plt.show()
 
-if __name__ == "__main__":
-    live_simulation()
+# 4. Air resistance vs. no air resistance
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+def projectile_with_drag(v0, angle, g=9.81, h=0, dt=0.05, drag_coeff=0.1):
+    angle_rad = np.radians(angle)
+    vx, vy = v0 * np.cos(angle_rad), v0 * np.sin(angle_rad)
+    x, y = [0], [h]
+    t = 0
+    while y[-1] >= 0:
+        t += dt
+        vx -= drag_coeff * vx * dt
+        vy -= (g + drag_coeff * vy) * dt
+        x.append(x[-1] + vx * dt)
+        y.append(y[-1] + vy * dt)
+    return np.array(x), np.array(y)
+
+x_no_drag, y_no_drag = projectile_trajectory(20, 45)
+x_drag, y_drag = projectile_with_drag(20, 45)
+plt.plot(x_no_drag, y_no_drag, label="No Air Resistance")
+plt.plot(x_drag, y_drag, linestyle='dashed', label="With Air Resistance")
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion With and Without Air Resistance")
+plt.legend()
+plt.grid()
+plt.show()
 ```
 
 ## 5. Limitations and Future Work
-- **No Air Resistance:** Real-world projectiles experience drag.
-- **Uneven Terrain:** Actual launch sites may not be level.
-- **Wind Effects:** Wind can significantly alter trajectories.
+- **No Air Resistance (Basic Model):** The extended model includes drag.
+- **Uneven Terrain:** Not considered.
+- **Wind Effects:** Future implementations could include wind effects.
 
 ### Future Enhancements
-- Incorporate drag and wind resistance.
-- Extend to 3D simulations with varying wind conditions.
-- Use numerical methods like Runge-Kutta for complex cases.
+- More detailed models incorporating wind and other real-world effects.
+- Extend to 3D projectile motion simulations.
