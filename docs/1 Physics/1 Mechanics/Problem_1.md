@@ -5,34 +5,31 @@
 
 ![alt text](projectile_motion.gif)
 
-## 1. Theoretical Foundation
-Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle \( \theta \) with initial velocity \( v_0 \) are derived from kinematic equations:
-
 ### Equations of Motion
 - **Horizontal displacement:**
-  ```math
+  $$
   x(t) = v_0 \cos(\theta) t
-  ```
+  $$
 - **Vertical displacement:**
-  ```math
+  $$
   y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-  ```
+  $$
 
 To find the range \( R \), we determine the time of flight \( T_f \):
-  ```math
+  $$
   T_f = \frac{2 v_0 \sin(\theta)}{g}
-  ```
+  $$
 
 Substituting into the horizontal displacement:
-  ```math
+  $$
   R = \frac{v_0^2 \sin(2\theta)}{g}
-  ```
+  $$
 
 ## 2. Analysis of the Range
 - The maximum range occurs at \( \theta = 45^\circ \), yielding:
-  ```math
+  $$
   R_{\max} = \frac{v_0^2}{g}
-  ```
+  $$
 - **Gravity Influence:** Lower gravity increases range (e.g., Moon vs. Earth).
 - **Velocity Impact:** Higher velocity increases range quadratically.
 
@@ -74,6 +71,7 @@ plt.grid()
 plt.show()
 
 # Live Interactive Simulation with Pygame
+
 def live_simulation():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
@@ -136,4 +134,3 @@ if __name__ == "__main__":
 - Incorporate drag and wind resistance.
 - Extend to 3D simulations with varying wind conditions.
 - Use numerical methods like Runge-Kutta for complex cases.
-
