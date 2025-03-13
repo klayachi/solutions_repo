@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Investigating the Range as a Function of the Angle of Projection - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Investigating the Range as a Function of the Angle of Projection";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,8 +46,26 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Investigating the Range as a Function of the Angle of Projection</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#equations-of-motion">Equations of Motion</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-analysis-of-the-range">2. Analysis of the Range</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-practical-applications">3. Practical Applications</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-implementation">4. Implementation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-limitations-and-future-work">5. Limitations and Future Work</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#future-enhancements">Future Enhancements</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -163,7 +181,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Investigating the Range as a Function of the Angle of Projection</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +189,6 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
 <h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
 <h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
 <p>Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle <span class="arithmatex">\( \theta \)</span> with initial velocity <span class="arithmatex">\( v_0 \)</span> are derived from kinematic equations:</p>
@@ -210,7 +227,6 @@
 import matplotlib.pyplot as plt
 import pygame
 import math
-from scipy.optimize import fsolve
 
 def projectile_range(theta, v0, g=9.81):
     """Computes the range of a projectile given initial velocity and launch angle."""
@@ -235,36 +251,53 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# Live Simulation with Pygame
+# Live Interactive Simulation with Pygame
 def live_simulation():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("Projectile Motion Simulation")
+    pygame.display.set_caption("Interactive Projectile Motion")
     clock = pygame.time.Clock()
+    font = pygame.font.Font(None, 36)
 
     v0 = 50  # Initial velocity
     angle = 45  # Launch angle in degrees
     g = 9.81  # Gravity
     dt = 0.1  # Time step
 
-    x, y = 50, 500  # Initial position
-    vx = v0 * math.cos(math.radians(angle))
-    vy = -v0 * math.sin(math.radians(angle))
-
     running = True
     while running:
         screen.fill((0, 0, 0))
-        pygame.draw.circle(screen, (255, 0, 0), (int(x), int(y)), 5)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    angle = min(angle + 5, 90)
+                elif event.key == pygame.K_DOWN:
+                    angle = max(angle - 5, 0)
+                elif event.key == pygame.K_RIGHT:
+                    v0 += 5
+                elif event.key == pygame.K_LEFT:
+                    v0 = max(v0 - 5, 5)
+
+        x, y = 50, 500  # Initial position
+        vx = v0 * math.cos(math.radians(angle))
+        vy = -v0 * math.sin(math.radians(angle))
+
+        while y &lt; 500:
+            pygame.draw.circle(screen, (255, 0, 0), (int(x), int(y)), 5)
+            pygame.display.flip()
+            x += vx * dt
+            vy += g * dt
+            y += vy * dt
+            clock.tick(60)
+
+        angle_text = font.render(f"Angle: {angle}°", True, (255, 255, 255))
+        v0_text = font.render(f"Velocity: {v0} m/s", True, (255, 255, 255))
+        screen.blit(angle_text, (10, 10))
+        screen.blit(v0_text, (10, 40))
         pygame.display.flip()
-
-        x += vx * dt
-        vy += g * dt
-        y += vy * dt
-
-        if y &gt; 500:
-            running = False
-
-        clock.tick(60)
 
     pygame.quit()
 
@@ -283,8 +316,6 @@ if __name__ == "__main__":
 <li>Extend to 3D simulations with varying wind conditions.</li>
 <li>Use numerical methods like Runge-Kutta for complex cases.</li>
 </ul>
-<hr/>
-<p>This report provides a structured analysis of projectile motion and a computational approach to visualize its behavior, including an interactive live simulation using Pygame.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
