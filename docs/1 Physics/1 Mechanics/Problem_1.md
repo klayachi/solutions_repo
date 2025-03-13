@@ -1,5 +1,3 @@
-# Problem 1
-
 # Investigating the Range as a Function of the Angle of Projection
 
 ## 1. Theoretical Foundation
@@ -46,7 +44,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pygame
 import math
-from scipy.optimize import fsolve
 
 def projectile_range(theta, v0, g=9.81):
     """Computes the range of a projectile given initial velocity and launch angle."""
@@ -71,36 +68,53 @@ plt.legend()
 plt.grid()
 plt.show()
 
-# Live Simulation with Pygame
+# Live Interactive Simulation with Pygame
 def live_simulation():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("Projectile Motion Simulation")
+    pygame.display.set_caption("Interactive Projectile Motion")
     clock = pygame.time.Clock()
+    font = pygame.font.Font(None, 36)
     
     v0 = 50  # Initial velocity
     angle = 45  # Launch angle in degrees
     g = 9.81  # Gravity
     dt = 0.1  # Time step
     
-    x, y = 50, 500  # Initial position
-    vx = v0 * math.cos(math.radians(angle))
-    vy = -v0 * math.sin(math.radians(angle))
-    
     running = True
     while running:
         screen.fill((0, 0, 0))
-        pygame.draw.circle(screen, (255, 0, 0), (int(x), int(y)), 5)
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    angle = min(angle + 5, 90)
+                elif event.key == pygame.K_DOWN:
+                    angle = max(angle - 5, 0)
+                elif event.key == pygame.K_RIGHT:
+                    v0 += 5
+                elif event.key == pygame.K_LEFT:
+                    v0 = max(v0 - 5, 5)
+        
+        x, y = 50, 500  # Initial position
+        vx = v0 * math.cos(math.radians(angle))
+        vy = -v0 * math.sin(math.radians(angle))
+        
+        while y < 500:
+            pygame.draw.circle(screen, (255, 0, 0), (int(x), int(y)), 5)
+            pygame.display.flip()
+            x += vx * dt
+            vy += g * dt
+            y += vy * dt
+            clock.tick(60)
+        
+        angle_text = font.render(f"Angle: {angle}°", True, (255, 255, 255))
+        v0_text = font.render(f"Velocity: {v0} m/s", True, (255, 255, 255))
+        screen.blit(angle_text, (10, 10))
+        screen.blit(v0_text, (10, 40))
         pygame.display.flip()
-        
-        x += vx * dt
-        vy += g * dt
-        y += vy * dt
-        
-        if y > 500:
-            running = False
-        
-        clock.tick(60)
     
     pygame.quit()
 
@@ -118,5 +132,3 @@ if __name__ == "__main__":
 - Extend to 3D simulations with varying wind conditions.
 - Use numerical methods like Runge-Kutta for complex cases.
 
----
-This report provides a structured analysis of projectile motion and a computational approach to visualize its behavior, including an interactive live simulation using Pygame.
