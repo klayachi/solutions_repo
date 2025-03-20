@@ -183,7 +183,3 @@ plt.show()
 - **No Air Resistance (Basic Model):** The extended model includes drag.
 - **Uneven Terrain:** Not considered.
 - **Wind Effects:** Future implementations could include wind effects.
-
-### Future Enhancements
-- More detailed models incorporating wind and other real-world effects.
-- Extend to 3D projectile motion simulations.
