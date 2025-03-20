@@ -48,12 +48,36 @@ Substituting into the horizontal displacement:
   $$
 
 ## 2. Analysis of the Range
-- The maximum range occurs at \( \theta = 45^\circ \), yielding:
+
+- The maximum range occurs at \( \theta = 45^\circ \), yielding:  
   $$
   R_{\max} = \frac{v_0^2}{g}
+  $$  
+- **Why is \( 45^\circ \) the optimal angle?**  
+
+  The range formula for projectile motion (neglecting air resistance) is:  
+
   $$
-- **Gravity Influence:** Lower gravity increases range (e.g., Moon vs. Earth).
-- **Velocity Impact:** Higher velocity increases range quadratically.
+  R = \frac{v_0^2 \sin(2\theta)}{g}
+  $$  
+
+  The **sine function** reaches its maximum value when **\( 2\theta = 90^\circ \)**, meaning:  
+
+  $$
+  \theta = 45^\circ
+  $$  
+
+  At this angle, the **horizontal velocity** and **vertical velocity** are balanced, maximizing the distance traveled.  
+
+  **Visual Representation:**  
+
+  Below is a diagram illustrating projectile motion at different angles. Notice how the range is maximized at **\( 45^\circ \)**:  
+
+![alt text](<DALL·E 2025-03-20 15.31.59 - A physics diagram illustrating projectile motion at different angles (30°, 45°, and 60°). The trajectories should be drawn with different colors to sh-1.webp>)
+
+- **Gravity Influence:** Lower gravity increases range (e.g., Moon vs. Earth).  
+- **Velocity Impact:** Higher velocity increases range quadratically.  
+
 
 ## 3. Practical Applications
 - **Sports:** Ball trajectories in football and golf.
