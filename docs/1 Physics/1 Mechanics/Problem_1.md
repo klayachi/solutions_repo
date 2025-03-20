@@ -63,6 +63,7 @@ Substituting into the horizontal displacement:
 ## 4. Implementation
 The following Python script implements additional simulations based on professor's notes:
 
+```
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -103,7 +104,6 @@ def update(frame):
 ani = FuncAnimation(fig, update, frames=len(x_data), interval=50, blit=True)
 
 plt.show()
-
 ```
 
 ## 5. Limitations and Future Work
