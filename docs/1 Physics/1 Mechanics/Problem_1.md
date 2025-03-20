@@ -80,6 +80,9 @@ Substituting into the horizontal displacement:
 
 
 ## 3. Practical Applications
+
+![alt text](projectile_motion_examples.gif)
+
 - **Sports:** Ball trajectories in football and golf.
 - **Engineering:** Optimizing projectile launch angles.
 - **Astrophysics:** Calculating satellite orbits and probes.
