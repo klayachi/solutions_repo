@@ -22,8 +22,6 @@ Integrating again:
   x(t) = v_0 \cos(\theta) t, \quad y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
   $$
 
-  ![alt text](<DALL·E 2025-03-20 15.04.37 - A physics diagram illustrating projectile motion, showing the decomposition of motion into horizontal and vertical components. The image should includ.webp>)
-  
 
 ### Equations of Motion
 - **Horizontal displacement:**
@@ -34,6 +32,8 @@ Integrating again:
   $$
   y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
   $$
+
+    ![alt text](<DALL·E 2025-03-20 15.04.37 - A physics diagram illustrating projectile motion, showing the decomposition of motion into horizontal and vertical components. The image should includ.webp>)
 
 To find the range \( R \), we determine the time of flight \( T_f \):
   $$
