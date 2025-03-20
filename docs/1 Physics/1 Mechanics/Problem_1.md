@@ -5,10 +5,6 @@
 ![alt text](projectile_all_angles_slow.gif)
 
 
-<img src="projectile_all_angles_slow.gif" alt="My GIF">
-
-
-
 ## 1. Theoretical Foundation
 Projectile motion is governed by Newton's laws. The equations of motion for a projectile launched at an angle \( \theta \) with initial velocity \( v_0 \) are derived from kinematic equations:
 
