@@ -25,7 +25,7 @@ Integrating again:
 
 ### Equations of Motion
 
-    ![alt text](<DALL·E 2025-03-20 15.04.37 - A physics diagram illustrating projectile motion, showing the decomposition of motion into horizontal and vertical components. The image should includ.webp>)
+![alt text](<DALL·E 2025-03-20 15.04.37 - A physics diagram illustrating projectile motion, showing the decomposition of motion into horizontal and vertical components. The image should includ.webp>)
     
 - **Horizontal displacement:**
   $$
@@ -63,9 +63,10 @@ Substituting into the horizontal displacement:
 ## 4. Implementation
 The following Python script implements additional simulations based on professor's notes:
 
-```python
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
 def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
     angle_rad = np.radians(angle)
