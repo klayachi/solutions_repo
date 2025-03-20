@@ -24,8 +24,6 @@ Integrating again:
 
 
 ### Equations of Motion
-
-![alt text](<DALL·E 2025-03-20 15.04.37 - A physics diagram illustrating projectile motion, showing the decomposition of motion into horizontal and vertical components. The image should includ.webp>)
     
 - **Horizontal displacement:**
   $$
@@ -73,15 +71,12 @@ Substituting into the horizontal displacement:
 
   Below is a diagram illustrating projectile motion at different angles. Notice how the range is maximized at **\( 45^\circ \)**:  
 
-![alt text](<DALL·E 2025-03-20 15.31.59 - A physics diagram illustrating projectile motion at different angles (30°, 45°, and 60°). The trajectories should be drawn with different colors to sh-1.webp>)
 
 - **Gravity Influence:** Lower gravity increases range (e.g., Moon vs. Earth).  
 - **Velocity Impact:** Higher velocity increases range quadratically.  
 
 
 ## 3. Practical Applications
-
-![alt text](projectile_motion_examples.gif)
 
 - **Sports:** Ball trajectories in football and golf.
 - **Engineering:** Optimizing projectile launch angles.
