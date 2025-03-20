@@ -228,8 +228,8 @@ Integrating again:
 <p>The following Python script implements additional simulations based on professor's notes:</p>
 <p>import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from IPython.display import HTML</p>
+from matplotlib.animation import FuncAnimation</p>
+<h1 id="function-to-calculate-projectile-trajectory">Function to calculate projectile trajectory</h1>
 <p>def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
     angle_rad = np.radians(angle)
     vx = v0 * np.cos(angle_rad)
@@ -241,69 +241,26 @@ from IPython.display import HTML</p>
         x.append(vx * t)
         y.append(h + vy * t - 0.5 * g * t**2)
     return np.array(x), np.array(y)</p>
-<h1 id="1-three-different-velocities-on-the-same-plot">1. Three different velocities on the same plot</h1>
-<p>plt.figure(figsize=(8,5))
-plt.ylim(0, 60)
-for v0 in [10, 20, 30]:
-    x, y = projectile_trajectory(v0, 45)
-    plt.plot(x, y, label=f'v0 = {v0} m/s')
-plt.xlabel("Horizontal Distance (m)")
-plt.ylabel("Vertical Distance (m)")
-plt.title("Projectile Motion with Different Velocities")
-plt.legend()
-plt.grid()
-plt.show()</p>
-<h1 id="2-same-initial-conditions-on-three-different-planets">2. Same initial conditions on three different planets</h1>
-<p>plt.figure(figsize=(8,5))
-plt.ylim(0, 60)
-planets = {"Earth": 9.81, "Moon": 1.62, "Jupiter": 24.79}
-for planet, g in planets.items():
-    x, y = projectile_trajectory(20, 45, g)
-    plt.plot(x, y, label=planet)
-plt.xlabel("Horizontal Distance (m)")
-plt.ylabel("Vertical Distance (m)")
-plt.title("Projectile Motion on Different Planets")
-plt.legend()
-plt.grid()
-plt.show()</p>
-<h1 id="3-different-heights">3. Different heights</h1>
-<p>plt.figure(figsize=(8,5))
-plt.ylim(0, 60)
-for h in [0, 10, 20]:
-    x, y = projectile_trajectory(20, 45, 9.81, h)
-    plt.plot(x, y, label=f'Height = {h}m')
-plt.xlabel("Horizontal Distance (m)")
-plt.ylabel("Vertical Distance (m)")
-plt.title("Projectile Motion with Different Initial Heights")
-plt.legend()
-plt.grid()
-plt.show()</p>
-<h1 id="4-air-resistance-vs-no-air-resistance">4. Air resistance vs. no air resistance</h1>
-<p>plt.figure(figsize=(8,5))
-plt.ylim(0, 60)
-def projectile_with_drag(v0, angle, g=9.81, h=0, dt=0.05, drag_coeff=0.1):
-    angle_rad = np.radians(angle)
-    vx, vy = v0 * np.cos(angle_rad), v0 * np.sin(angle_rad)
-    x, y = [0], [h]
-    t = 0
-    while y[-1] &gt;= 0:
-        t += dt
-        vx -= drag_coeff * vx * dt
-        vy -= (g + drag_coeff * vy) * dt
-        x.append(x[-1] + vx * dt)
-        y.append(y[-1] + vy * dt)
-    return np.array(x), np.array(y)</p>
-<p>x_no_drag, y_no_drag = projectile_trajectory(20, 45)
-x_drag, y_drag = projectile_with_drag(20, 45)
-plt.plot(x_no_drag, y_no_drag, label="No Air Resistance")
-plt.plot(x_drag, y_drag, linestyle='dashed', label="With Air Resistance")
-plt.xlabel("Horizontal Distance (m)")
-plt.ylabel("Vertical Distance (m)")
-plt.title("Projectile Motion With and Without Air Resistance")
-plt.legend()
-plt.grid()
-plt.show()
-```</p>
+<h1 id="setting-up-the-figure">Setting up the figure</h1>
+<p>fig, ax = plt.subplots(figsize=(8, 5))
+ax.set_xlim(0, 60)
+ax.set_ylim(0, 30)
+ax.set_xlabel("Horizontal Distance (m)")
+ax.set_ylabel("Vertical Distance (m)")
+ax.set_title("Projectile Motion Animation")
+line, = ax.plot([], [], 'ro', markersize=6)  # Red dot for projectile</p>
+<h1 id="simulating-motion">Simulating motion</h1>
+<p>v0, angle = 20, 45  # Initial velocity and launch angle
+x_data, y_data = projectile_trajectory(v0, angle)</p>
+<h1 id="animation-function">Animation function</h1>
+<p>def update(frame):
+    if frame &lt; len(x_data):
+        line.set_data(x_data[frame], y_data[frame])
+    return line,</p>
+<h1 id="create-animation">Create animation</h1>
+<p>ani = FuncAnimation(fig, update, frames=len(x_data), interval=50, blit=True)</p>
+<p>plt.show()</p>
+<p>```</p>
 <h2 id="5-limitations-and-future-work">5. Limitations and Future Work</h2>
 <ul>
 <li><strong>No Air Resistance (Basic Model):</strong> The extended model includes drag.</li>
