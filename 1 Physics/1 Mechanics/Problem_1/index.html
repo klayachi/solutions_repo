@@ -226,11 +226,12 @@ Integrating again:
 </ul>
 <h2 id="4-implementation">4. Implementation</h2>
 <p>The following Python script implements additional simulations based on professor's notes:</p>
-<p>import numpy as np
+<pre><code>import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation</p>
-<h1 id="function-to-calculate-projectile-trajectory">Function to calculate projectile trajectory</h1>
-<p>def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
+from matplotlib.animation import FuncAnimation
+
+# Function to calculate projectile trajectory
+def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
     angle_rad = np.radians(angle)
     vx = v0 * np.cos(angle_rad)
     vy = v0 * np.sin(angle_rad)
@@ -240,27 +241,32 @@ from matplotlib.animation import FuncAnimation</p>
         t += dt
         x.append(vx * t)
         y.append(h + vy * t - 0.5 * g * t**2)
-    return np.array(x), np.array(y)</p>
-<h1 id="setting-up-the-figure">Setting up the figure</h1>
-<p>fig, ax = plt.subplots(figsize=(8, 5))
+    return np.array(x), np.array(y)
+
+# Setting up the figure
+fig, ax = plt.subplots(figsize=(8, 5))
 ax.set_xlim(0, 60)
 ax.set_ylim(0, 30)
 ax.set_xlabel("Horizontal Distance (m)")
 ax.set_ylabel("Vertical Distance (m)")
 ax.set_title("Projectile Motion Animation")
-line, = ax.plot([], [], 'ro', markersize=6)  # Red dot for projectile</p>
-<h1 id="simulating-motion">Simulating motion</h1>
-<p>v0, angle = 20, 45  # Initial velocity and launch angle
-x_data, y_data = projectile_trajectory(v0, angle)</p>
-<h1 id="animation-function">Animation function</h1>
-<p>def update(frame):
+line, = ax.plot([], [], 'ro', markersize=6)  # Red dot for projectile
+
+# Simulating motion
+v0, angle = 20, 45  # Initial velocity and launch angle
+x_data, y_data = projectile_trajectory(v0, angle)
+
+# Animation function
+def update(frame):
     if frame &lt; len(x_data):
         line.set_data(x_data[frame], y_data[frame])
-    return line,</p>
-<h1 id="create-animation">Create animation</h1>
-<p>ani = FuncAnimation(fig, update, frames=len(x_data), interval=50, blit=True)</p>
-<p>plt.show()</p>
-<p>```</p>
+    return line,
+
+# Create animation
+ani = FuncAnimation(fig, update, frames=len(x_data), interval=50, blit=True)
+
+plt.show()
+</code></pre>
 <h2 id="5-limitations-and-future-work">5. Limitations and Future Work</h2>
 <ul>
 <li><strong>No Air Resistance (Basic Model):</strong> The extended model includes drag.</li>
