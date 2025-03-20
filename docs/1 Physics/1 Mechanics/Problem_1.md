@@ -67,8 +67,8 @@ The following Python script implements additional simulations based on professor
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 
-# Function to calculate projectile trajectory
 def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
     angle_rad = np.radians(angle)
     vx = v0 * np.cos(angle_rad)
@@ -81,28 +81,71 @@ def projectile_trajectory(v0, angle, g=9.81, h=0, dt=0.05):
         y.append(h + vy * t - 0.5 * g * t**2)
     return np.array(x), np.array(y)
 
-# Setting up the figure
-fig, ax = plt.subplots(figsize=(8, 5))
-ax.set_xlim(0, 60)
-ax.set_ylim(0, 30)
-ax.set_xlabel("Horizontal Distance (m)")
-ax.set_ylabel("Vertical Distance (m)")
-ax.set_title("Projectile Motion Animation")
-line, = ax.plot([], [], 'ro', markersize=6)  # Red dot for projectile
+# 1. Three different velocities on the same plot
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+for v0 in [10, 20, 30]:
+    x, y = projectile_trajectory(v0, 45)
+    plt.plot(x, y, label=f'v0 = {v0} m/s')
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion with Different Velocities")
+plt.legend()
+plt.grid()
+plt.show()
 
-# Simulating motion
-v0, angle = 20, 45  # Initial velocity and launch angle
-x_data, y_data = projectile_trajectory(v0, angle)
+# 2. Same initial conditions on three different planets
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+planets = {"Earth": 9.81, "Moon": 1.62, "Jupiter": 24.79}
+for planet, g in planets.items():
+    x, y = projectile_trajectory(20, 45, g)
+    plt.plot(x, y, label=planet)
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion on Different Planets")
+plt.legend()
+plt.grid()
+plt.show()
 
-# Animation function
-def update(frame):
-    if frame < len(x_data):
-        line.set_data(x_data[frame], y_data[frame])
-    return line,
+# 3. Different heights
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+for h in [0, 10, 20]:
+    x, y = projectile_trajectory(20, 45, 9.81, h)
+    plt.plot(x, y, label=f'Height = {h}m')
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion with Different Initial Heights")
+plt.legend()
+plt.grid()
+plt.show()
 
-# Create animation
-ani = FuncAnimation(fig, update, frames=len(x_data), interval=50, blit=True)
+# 4. Air resistance vs. no air resistance
+plt.figure(figsize=(8,5))
+plt.ylim(0, 60)
+def projectile_with_drag(v0, angle, g=9.81, h=0, dt=0.05, drag_coeff=0.1):
+    angle_rad = np.radians(angle)
+    vx, vy = v0 * np.cos(angle_rad), v0 * np.sin(angle_rad)
+    x, y = [0], [h]
+    t = 0
+    while y[-1] >= 0:
+        t += dt
+        vx -= drag_coeff * vx * dt
+        vy -= (g + drag_coeff * vy) * dt
+        x.append(x[-1] + vx * dt)
+        y.append(y[-1] + vy * dt)
+    return np.array(x), np.array(y)
 
+x_no_drag, y_no_drag = projectile_trajectory(20, 45)
+x_drag, y_drag = projectile_with_drag(20, 45)
+plt.plot(x_no_drag, y_no_drag, label="No Air Resistance")
+plt.plot(x_drag, y_drag, linestyle='dashed', label="With Air Resistance")
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.title("Projectile Motion With and Without Air Resistance")
+plt.legend()
+plt.grid()
 plt.show()
 ```
 
