@@ -62,7 +62,9 @@ Substituting into the horizontal displacement:
 
 ## 4. Implementation
 The following Python script implements additional simulations based on professor's notes:
-Click the link for Collab Simulation : https://colab.research.google.com/drive/1vAG0r9HznXhCcpJ7Q-qQ4i_W0lf_yCkD?usp=sharing
+You can run the simulation in Google Colab by clicking the link below:
+
+[▶ Run in Google Colab](https://colab.research.google.com/drive/1vAG0r9HznXhCcpJ7Q-qQ4i_W0lf_yCkD?usp=sharing)
 
 ```
 import numpy as np
