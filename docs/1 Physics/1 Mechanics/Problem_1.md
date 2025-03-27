@@ -118,10 +118,7 @@ Substituting into the horizontal displacement:
 
   At this angle, the **horizontal velocity** and **vertical velocity** are balanced, maximizing the distance traveled.  
 
-  **Visual Representation:**  
-
-  Below is a diagram illustrating projectile motion at different angles. Notice how the range is maximized at **\( 45^\circ \)**:  
-
+  **Representations:** 
 
 - **Gravity Influence:** Lower gravity increases range (e.g., Moon vs. Earth).  
 - **Velocity Impact:** Higher velocity increases range quadratically.  
@@ -149,12 +146,6 @@ In astrophysics, the study of projectile motion is crucial for calculating the o
 
 - **Satellite Orbits**: The trajectories of satellites around Earth or other planets are determined by applying the principles of projectile motion. Engineers and astrophysicists use these principles to ensure satellites stay in orbit and fulfill their intended functions.
 - **Space Probes**: Space agencies like NASA rely on precise projectile motion calculations when launching probes to explore planets, moons, and asteroids. Accurate predictions of trajectory and range are essential to ensure that these probes reach their targets, such as Mars or Jupiter's moons, without missing their mark.
-
-### 3.4 Environmental Science
-Projectile motion principles are also relevant in environmental science, particularly in the study of pollution and the movement of particles in the atmosphere. For instance, understanding the motion of pollutants released into the atmosphere can help predict how far and in what direction these pollutants will travel.
-
-- **Pollutant Dispersion**: The dispersion of pollutants in the atmosphere or water bodies can be modeled using the principles of projectile motion. By calculating the optimal angles and velocities of the particles, environmental scientists can predict the spread of pollutants over time and space.
-- **Wildfire Smoke Trajectory**: In wildfire management, predicting the movement of smoke and ash can help emergency services plan evacuations and predict air quality conditions in affected areas.
 
 ## 4. Implementation
 The following Python script implements additional simulations based on professor's notes:
@@ -250,35 +241,92 @@ plt.show()
 
 ## 5. Limitations and Future Work
 
-While the basic model of projectile motion provides valuable insights, there are several limitations that need to be addressed in future studies. Expanding the model to incorporate more factors will improve its accuracy and applicability across various domains. Below are some key limitations and potential areas for future research:
+While the idealized model of projectile motion offers significant insight into the physics of motion under uniform gravity, it inherently excludes numerous real-world influences. To advance the fidelity and applicability of the model, several extensions are proposed. Below is a detailed analysis of the model's key limitations and potential enhancements.
 
-### 5.1 Simplified Assumptions in the Basic Model
-The standard projectile motion model neglects several real-world factors, such as air resistance, wind, and the Earth's curvature, which can all significantly affect the trajectory of a projectile. The basic model assumes:
-- **No Air Resistance**: This simplification assumes a frictionless environment, which is unrealistic, especially for objects moving at high speeds or over long distances.
-- **Flat Terrain**: The basic model assumes the projectile is launched from a flat surface, ignoring the effects of uneven terrain or changes in altitude.
-- **Constant Gravity**: The model assumes gravity is constant, but in reality, it varies slightly depending on the location on Earth and other factors, such as altitude.
+---
 
-### 5.2 Air Resistance and Drag
-One of the most significant limitations of the basic model is its neglect of air resistance, which plays a critical role in real-world projectile motion. In the presence of air resistance, the projectile’s trajectory is altered, resulting in a shorter range and a more complex path. Future work could focus on including drag forces in the equations, which would require more sophisticated models, such as the **drag equation** that accounts for factors like velocity, projectile shape, and air density.
+### 5.1 Simplified Assumptions in the Classical Model
 
-- **Drag Effects**: The effect of air resistance can be modeled using the drag coefficient, which depends on the object's shape, surface roughness, and velocity. Implementing air resistance would allow more accurate simulations of projectile motion in real-world scenarios.
-- **Wind Effects**: Wind can significantly influence the motion of a projectile, especially over long distances. Future studies could include wind simulations to account for changes in direction and speed, further enhancing the accuracy of the model.
+The classical projectile motion equations are derived under idealized conditions, assuming:
 
-### 5.3 Uneven Terrain and Variable Gravitational Fields
-The basic model assumes a flat, uniform surface for the projectile to land on, which is not always the case in real-world scenarios. For example, when launching projectiles on uneven terrain or at varying altitudes, the motion is influenced by changes in gravitational force and the angle of the launch.
+- **No Air Resistance**: The model neglects drag forces, which in reality oppose motion and reduce both range and maximum height.
+- **Uniform Terrain**: A flat surface is assumed, overlooking how uneven terrain or varying elevations affect both launch and landing dynamics.
+- **Constant Gravitational Field**: Gravity is considered a constant (typically $9.81 \, m/s^2$), although it slightly varies with altitude and geographic location.
 
-- **Uneven Terrain**: In future models, terrain variations could be included to simulate the projectile’s behavior when launched from hills, mountains, or other irregular surfaces.
-- **Variable Gravity**: Gravity decreases with altitude, and in certain locations, it may vary slightly. Incorporating this variable gravity into the equations could lead to more precise predictions for long-range projectiles, especially in space exploration.
+These simplifications make the model analytically tractable but limit its realism, especially for high-speed or long-range projectiles.
 
-### 5.4 Impact of External Factors
-Other environmental factors, such as temperature, humidity, and air pressure, can also affect projectile motion. Future work could consider these factors, particularly in applications like military ballistics or sports, where precision is critical.
+---
 
-- **Temperature and Humidity**: These factors can change the density of the air, which in turn affects air resistance. Future models could incorporate atmospheric conditions to refine the trajectory predictions.
-- **Coriolis Effect**: On Earth, the rotation of the planet affects long-range projectiles, particularly over large distances, such as when launching missiles or projectiles on a global scale. The **Coriolis effect** should be included in future models to account for the Earth's rotation.
+### 5.2 Modeling Air Resistance and Drag Forces
 
-### 5.5 Advanced Computational Models
-While the current simulations provide valuable insights, more advanced computational models could allow for more complex analyses. These models could use higher-order differential equations to account for additional forces and interactions, such as:
-- **Turbulent Flow**: Simulating the effects of turbulent air around the projectile could provide a more accurate representation of real-world conditions.
-- **Multi-Stage Trajectories**: For multi-stage projectiles, such as rockets or missiles, the trajectory could be modeled as a series of stages, each with different velocity, gravity, and drag conditions.
+One of the most significant oversights in the classical model is the exclusion of **air resistance**. Realistic modeling involves solving differential equations incorporating a drag term:
+
+$$
+F_d = \frac{1}{2} C_d \rho A v^2
+$$
+
+Where:
+- $C_d$ = Drag coefficient (depends on shape and surface)
+- $\rho$ = Air density
+- $A$ = Cross-sectional area
+- $v$ = Velocity
+
+**Future Work:**
+- Implement the drag equation into motion equations.
+- Analyze how the inclusion of drag alters trajectory curvature and range.
+
+#### 🔬 Graphical Comparison Using Python
+
+Below is a sample Python snippet that compares ideal vs drag-influenced projectile motion:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Constants
+g = 9.81  # gravity (m/s^2)
+v0 = 50   # initial velocity (m/s)
+theta = 45  # launch angle (degrees)
+Cd = 0.47  # drag coefficient (sphere)
+rho = 1.225  # air density (kg/m^3)
+A = 0.01  # cross-sectional area (m^2)
+m = 0.145  # mass (kg)
+
+# Initial conditions
+vx0 = v0 * np.cos(np.radians(theta))
+vy0 = v0 * np.sin(np.radians(theta))
+
+def drag_projectile(t, y):
+    vx, vy, x, y_pos = y
+    v = np.sqrt(vx**2 + vy**2)
+    Fd = 0.5 * Cd * rho * A * v**2
+    ax = -Fd * vx / (m * v)
+    ay = -g - (Fd * vy / (m * v))
+    return [ax, ay, vx, vy]
+
+# Solve with drag
+sol = solve_ivp(drag_projectile, [0, 10], [vx0, vy0, 0, 0], max_step=0.05)
+x_drag, y_drag = sol.y[2], sol.y[3]
+
+# Ideal model
+t = np.linspace(0, 2 * v0 * np.sin(np.radians(theta)) / g, 100)
+x_ideal = v0 * np.cos(np.radians(theta)) * t
+y_ideal = v0 * np.sin(np.radians(theta)) * t - 0.5 * g * t**2
+
+# Plotting
+plt.figure(figsize=(10, 5))
+plt.plot(x_ideal, y_ideal, label="No Drag (Ideal)", linestyle="--")
+plt.plot(x_drag, y_drag, label="With Air Drag")
+plt.xlabel("Distance (m)")
+plt.ylabel("Height (m)")
+plt.title("Projectile Motion: Ideal vs With Air Resistance")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+## Conclusion:
 
 In conclusion, while the basic model offers a solid foundation for understanding projectile motion, future work should expand the model to account for a broader range of real-world factors. By incorporating air resistance, varying terrain, and other external forces, we can achieve more accurate simulations and predictions, ultimately enhancing applications in fields like aerospace, sports, and environmental science.
