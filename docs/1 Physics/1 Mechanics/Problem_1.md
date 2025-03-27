@@ -148,7 +148,7 @@ In astrophysics, the study of projectile motion is crucial for calculating the o
 - **Space Probes**: Space agencies like NASA rely on precise projectile motion calculations when launching probes to explore planets, moons, and asteroids. Accurate predictions of trajectory and range are essential to ensure that these probes reach their targets, such as Mars or Jupiter's moons, without missing their mark.
 
 ## 4. Implementation
-The following Python script implements additional simulations based on professor's notes:
+The following Python script implements additional simulations:
 You can run the simulation in Google Colab by clicking the link below:
 
 [▶ Run in Google Colab](https://colab.research.google.com/drive/1vAG0r9HznXhCcpJ7Q-qQ4i_W0lf_yCkD?usp=sharing)
@@ -279,6 +279,10 @@ Where:
 
 Below is a sample Python snippet that compares ideal vs drag-influenced projectile motion:
 
+You can run the simulation in Google Colab by clicking the link below:
+
+[▶ Run in Google Colab](https://colab.research.google.com/drive/1zd6Q7MSwYnEW1NVjT0IBQRxHzR7kQztK?usp=sharing)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -326,6 +330,7 @@ plt.grid(True)
 plt.tight_layout()
 plt.show()
 ```
+![alt text](download.png)
 
 ## Conclusion:
 
