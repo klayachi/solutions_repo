@@ -262,6 +262,8 @@ The Python code below simulates projectile motion under these simplified assumpt
 - Flat ground
 - Constant gravitational acceleration
 
+[▶ Run in Google Colab](https://colab.research.google.com/drive/16LGEFKFh9DsTnLFqiaCJtJcIaQYIMClX?usp=sharing)
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -284,15 +286,16 @@ def projectile_ideal(v0, angle_deg):
 plt.figure(figsize=(10, 5))
 for angle in angles:
     x, y = projectile_ideal(v0, angle)
-    plt.plot(x, y, label=f\"{angle}°\")
+    plt.plot(x, y, label=f"{angle}°")
 
-plt.title(\"Idealized Projectile Motion (No Air Resistance, Flat Terrain, Constant Gravity)\")
-plt.xlabel(\"Horizontal Distance (m)\")
-plt.ylabel(\"Vertical Distance (m)\")
-plt.legend(title=\"Launch Angle\")
+plt.title("Idealized Projectile Motion (No Air Resistance, Flat Terrain, Constant Gravity)")
+plt.xlabel("Horizontal Distance (m)")
+plt.ylabel("Vertical Distance (m)")
+plt.legend(title="Launch Angle")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
 ```
 This visualization highlights the elegant parabolic nature of projectile trajectories in an idealized setting, laying the groundwork for deeper models that include real-world complexity.
 
