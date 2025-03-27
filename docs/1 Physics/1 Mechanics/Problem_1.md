@@ -255,6 +255,47 @@ The classical projectile motion equations are derived under idealized conditions
 
 These simplifications make the model analytically tractable but limit its realism, especially for high-speed or long-range projectiles.
 
+#### 🔬 Simulation: Ideal Projectile Motion
+
+The Python code below simulates projectile motion under these simplified assumptions. It compares three different launch angles (30°, 45°, 60°) with a fixed initial velocity, assuming:
+- No drag
+- Flat ground
+- Constant gravitational acceleration
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+g = 9.81  # gravity (m/s^2)
+angles = [30, 45, 60]  # degrees
+v0 = 25  # initial velocity (m/s)
+
+# Function to calculate ideal projectile motion
+def projectile_ideal(v0, angle_deg):
+    angle_rad = np.radians(angle_deg)
+    t_flight = 2 * v0 * np.sin(angle_rad) / g
+    t = np.linspace(0, t_flight, num=200)
+    x = v0 * np.cos(angle_rad) * t
+    y = v0 * np.sin(angle_rad) * t - 0.5 * g * t**2
+    return x, y
+
+# Plotting
+plt.figure(figsize=(10, 5))
+for angle in angles:
+    x, y = projectile_ideal(v0, angle)
+    plt.plot(x, y, label=f\"{angle}°\")
+
+plt.title(\"Idealized Projectile Motion (No Air Resistance, Flat Terrain, Constant Gravity)\")
+plt.xlabel(\"Horizontal Distance (m)\")
+plt.ylabel(\"Vertical Distance (m)\")
+plt.legend(title=\"Launch Angle\")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+This visualization highlights the elegant parabolic nature of projectile trajectories in an idealized setting, laying the groundwork for deeper models that include real-world complexity.
+
 ---
 
 ### 5.2 Modeling Air Resistance and Drag Forces
