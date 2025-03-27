@@ -335,3 +335,9 @@ plt.show()
 ## Conclusion:
 
 In conclusion, while the basic model offers a solid foundation for understanding projectile motion, future work should expand the model to account for a broader range of real-world factors. By incorporating air resistance, varying terrain, and other external forces, we can achieve more accurate simulations and predictions, ultimately enhancing applications in fields like aerospace, sports, and environmental science.
+
+## Further Viewing
+
+For a quick and visual summary of projectile motion, watch this short video:
+
+🎥 [Physics Made Easy – Projectile Motion (YouTube)](https://www.youtube.com/watch?v=NXTCsD7hvTk)
