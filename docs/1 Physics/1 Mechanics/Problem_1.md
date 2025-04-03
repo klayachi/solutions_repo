@@ -344,6 +344,8 @@ Where:
 
 Below is a sample Python snippet that compares ideal vs drag-influenced projectile motion:
 
+![alt text](image-6.png)
+
 You can run the simulation in Google Colab by clicking the link below:
 
 [▶ Run in Google Colab](https://colab.research.google.com/drive/1zd6Q7MSwYnEW1NVjT0IBQRxHzR7kQztK?usp=sharing)
@@ -409,7 +411,6 @@ plt.tight_layout()
 plt.show()
 
 ```
-![alt text](image-6.png)
 
 ## Conclusion:
 
