@@ -274,8 +274,11 @@ These simplifications make the model analytically tractable but limit its realis
 #### 🔬 Simulation: Ideal Projectile Motion
 
 The Python code below simulates projectile motion under these simplified assumptions. It compares three different launch angles (30°, 45°, 60°) with a fixed initial velocity, assuming:
+
 - No drag
+
 - Flat ground
+
 - Constant gravitational acceleration
 
 ![alt text](image-5.png)
