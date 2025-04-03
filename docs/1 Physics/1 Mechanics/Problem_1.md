@@ -278,6 +278,8 @@ The Python code below simulates projectile motion under these simplified assumpt
 - Flat ground
 - Constant gravitational acceleration
 
+![alt text](image-5.png)
+
 [▶ Run in Google Colab](https://colab.research.google.com/drive/16LGEFKFh9DsTnLFqiaCJtJcIaQYIMClX?usp=sharing)
 
 ```python
@@ -357,10 +359,11 @@ rho = 1.225  # air density (kg/m^3)
 A = 0.01  # cross-sectional area (m^2)
 m = 0.145  # mass (kg)
 
-# Initial conditions
+# Initial velocities
 vx0 = v0 * np.cos(np.radians(theta))
 vy0 = v0 * np.sin(np.radians(theta))
 
+# System of differential equations
 def drag_projectile(t, y):
     vx, vy, x, y_pos = y
     v = np.sqrt(vx**2 + vy**2)
@@ -369,14 +372,26 @@ def drag_projectile(t, y):
     ay = -g - (Fd * vy / (m * v))
     return [ax, ay, vx, vy]
 
-# Solve with drag
-sol = solve_ivp(drag_projectile, [0, 10], [vx0, vy0, 0, 0], max_step=0.05)
+# Event to stop integration when projectile hits the ground
+def hit_ground(t, y):
+    return y[3]  # y-position
+hit_ground.terminal = True
+hit_ground.direction = -1
+
+# Solve with air resistance
+sol = solve_ivp(
+    drag_projectile,
+    [0, 10],
+    [vx0, vy0, 0, 0],
+    events=hit_ground,
+    max_step=0.01
+)
 x_drag, y_drag = sol.y[2], sol.y[3]
 
-# Ideal model
-t = np.linspace(0, 2 * v0 * np.sin(np.radians(theta)) / g, 100)
-x_ideal = v0 * np.cos(np.radians(theta)) * t
-y_ideal = v0 * np.sin(np.radians(theta)) * t - 0.5 * g * t**2
+# Ideal trajectory
+t = np.linspace(0, 2 * vy0 / g, 100)
+x_ideal = vx0 * t
+y_ideal = vy0 * t - 0.5 * g * t**2
 
 # Plotting
 plt.figure(figsize=(10, 5))
@@ -389,8 +404,9 @@ plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
 ```
-![alt text](download.png)
+![alt text](image-6.png)
 
 ## Conclusion:
 
