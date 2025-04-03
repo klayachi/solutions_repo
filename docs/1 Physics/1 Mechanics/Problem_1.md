@@ -239,6 +239,22 @@ plt.grid()
 plt.show()
 ```
 
+### Different Velocities:
+
+![alt text](image.png)
+
+### Different Planets:
+
+![alt text](image-1.png)
+
+### Different Initial Heights:
+
+![alt text](image-2.png)
+
+### Difference between with and without air resistance:
+
+![alt text](image-4.png)
+
 ## 5. Limitations and Future Work
 
 While the idealized model of projectile motion offers significant insight into the physics of motion under uniform gravity, it inherently excludes numerous real-world influences. To advance the fidelity and applicability of the model, several extensions are proposed. Below is a detailed analysis of the model's key limitations and potential enhancements.
