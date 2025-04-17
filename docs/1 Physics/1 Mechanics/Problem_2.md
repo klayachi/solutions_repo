@@ -86,7 +86,7 @@ The following code includes **independent simulations** for each pendulum scenar
 - Phase Portrait (Angle vs Angular Velocity)
 
 Model setup used in all cases:
----
+--- 
 
 ## Google Colab
 
