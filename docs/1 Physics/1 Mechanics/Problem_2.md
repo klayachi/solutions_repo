@@ -24,33 +24,24 @@ $$
 
 Where:
 
-Where:
-
 | Symbol        | Description                         |
 |---------------|-------------------------------------|
-| $\\theta(t)$  | Angular displacement                |
-| $\\gamma$     | Damping coefficient                 |
+| $\theta(t)$  | Angular displacement                |
+| $\gamma$     | Damping coefficient                 |
 | $g$           | Gravitational acceleration          |
 | $L$           | Length of the pendulum              |
 | $A$           | Amplitude of the driving force      |
-| $\\omega$     | Frequency of the driving force      |
-
-
-#### Small-Angle Approximation
-
-When $$ \theta \ll 1 $$, we approximate $$ \sin(\theta) \approx \theta $$, leading to:
-
-$$
-\frac{d^2\theta}{dt^2} + \gamma \frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)
+| $\omega$     | Frequency of the driving force      |
+ = A \cos(\omega t)
 $$
 
 This linear non-homogeneous equation allows a solution composed of two parts:  
 - **Transient**: Decaying oscillations due to damping  
-- **Steady-state**: Driven oscillations at the frequency $$ \omega $$  
+- **Steady-state**: Driven oscillations at the frequency $ \omega $  
 
 #### Resonance Condition
 
-Resonance occurs when the driving frequency $$ \omega $$ approaches the system's natural frequency:
+Resonance occurs when the driving frequency $ \omega $ approaches the system's natural frequency:
 
 $$
 \omega_0 = \sqrt{\frac{g}{L}}
@@ -64,17 +55,17 @@ At resonance, the pendulum experiences the maximum energy transfer from the driv
 
 We examine the effect of three primary parameters:
 
-- **Damping ($$\gamma$$)**  
+- **Damping ($\gamma$)**  
   - Low: Sustained oscillations  
   - High: Rapid energy dissipation  
 
-- **Driving Amplitude ($$A$$)**  
+- **Driving Amplitude ($A$)**  
   - Low: Regular motion  
   - High: Chaotic transitions  
 
-- **Driving Frequency ($$\omega$$)**  
-  - $$ \omega \approx \omega_0 $$: Resonance  
-  - $$ \omega \neq \omega_0 $$: Sub-harmonic, quasiperiodic, or chaotic motion  
+- **Driving Frequency ($\omega$)**  
+  - $ \omega \approx \omega_0 $: Resonance  
+  - $ \omega \neq \omega_0 $: Sub-harmonic, quasiperiodic, or chaotic motion  
 
 At certain parameter combinations, the pendulum displays **chaotic motion**—highly sensitive to initial conditions and unpredictable over long time intervals.
 
