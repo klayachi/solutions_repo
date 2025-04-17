@@ -1,4 +1,3 @@
-
 # Problem 2  
 # Investigating the Dynamics of a Forced Damped Pendulum
 
@@ -63,7 +62,7 @@ We examine the effect of three primary parameters:
   - High: Chaotic transitions  
 
 - **Driving Frequency ($\omega$)**  
-  - $\omega \approx \omega_0$: Resonance  
+  - $\omega \approx\omega_0 $: Resonance  
   - $\omega \neq \omega_0$: Sub-harmonic, quasiperiodic, or chaotic motion  
 
 At certain parameter combinations, the pendulum displays **chaotic motion**—highly sensitive to initial conditions and unpredictable over long time intervals.
@@ -78,72 +77,73 @@ At certain parameter combinations, the pendulum displays **chaotic motion**—hi
 
 ---
 
+
 ### 4. Implementation: Python Simulation
 
-Below are Python simulations exploring pendulum dynamics under various settings. You can run the full simulation set on Google Colab.
-
-#### Basic Setup
+The following Python code includes all required cases and visualizations based on the professor's suggestions:
+- **Angle vs Time** and **Phase Portraits**
+- For:
+  - Pure Pendulum (no damping, no forcing)
+  - Damped Pendulum (no forcing)
+  - Forced Pendulum (no damping)
+  - Two Forced Damped Pendulum scenarios: resonance and chaotic
 
 ```python
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 
-def forced_damped_pendulum(t, y, gamma, omega0, A, omega):
+# Model function
+def pendulum_model(t, y, gamma, omega0, A, omega):
     theta, omega1 = y
     dtheta_dt = omega1
     domega_dt = -gamma * omega1 - omega0**2 * np.sin(theta) + A * np.cos(omega * t)
     return [dtheta_dt, domega_dt]
+
+# Scenarios to simulate
+scenarios = [
+    {"title": "Pure Pendulum (No Damping, No Forcing)", "gamma": 0, "A": 0, "omega": 0},
+    {"title": "Damped Pendulum (No Forcing)", "gamma": 0.3, "A": 0, "omega": 0},
+    {"title": "Forced Pendulum (No Damping)", "gamma": 0, "A": 1.2, "omega": 1.5},
+    {"title": "Forced Damped Pendulum - Resonance", "gamma": 0.1, "A": 1.5, "omega": 1.5},
+    {"title": "Forced Damped Pendulum - Chaotic", "gamma": 0.2, "A": 1.8, "omega": 1.5},
+]
+
+omega0 = 1.5
+t_span = [0, 50]
+t_eval = np.linspace(*t_span, 2000)
+initial_state = [0.1, 0]
+
+for s in scenarios:
+    sol = solve_ivp(
+        pendulum_model, t_span, initial_state,
+        args=(s["gamma"], omega0, s["A"], s["omega"]),
+        t_eval=t_eval
+    )
+    
+    # Plot Angle vs Time
+    plt.figure(figsize=(10, 4))
+    plt.plot(sol.t, sol.y[0], label='Angle $\theta(t)$')
+    plt.title(f'{s["title"]} - Angle vs Time')
+    plt.xlabel("Time (s)")
+    plt.ylabel("Angle (rad)")
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+    # Plot Phase Portrait
+    plt.figure(figsize=(6, 6))
+    plt.plot(sol.y[0], sol.y[1])
+    plt.title(f'{s["title"]} - Phase Diagram')
+    plt.xlabel("Angle $\theta$ (rad)")
+    plt.ylabel("Angular Velocity $\omega$ (rad/s)")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
 ```
-
-#### Case 1: No damping, no forcing
-
-```python
-sol = solve_ivp(forced_damped_pendulum, [0, 50], [0.1, 0], args=(0, 1.5, 0, 0), t_eval=np.linspace(0, 50, 1000))
-plt.plot(sol.t, sol.y[0])
-plt.title("Pendulum without damping or forcing")
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (rad)")
-plt.grid()
-plt.show()
-```
-
-#### Case 2: Damped, no forcing
-
-```python
-sol = solve_ivp(forced_damped_pendulum, [0, 50], [0.1, 0], args=(0.5, 1.5, 0, 0), t_eval=np.linspace(0, 50, 1000))
-plt.plot(sol.t, sol.y[0])
-plt.title("Damped Pendulum")
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (rad)")
-plt.grid()
-plt.show()
-```
-
-#### Case 3: Damped with periodic forcing
-
-```python
-sol = solve_ivp(forced_damped_pendulum, [0, 50], [0.1, 0], args=(0.5, 1.5, 1.2, 1.5), t_eval=np.linspace(0, 50, 1000))
-plt.plot(sol.t, sol.y[0])
-plt.title("Forced Damped Pendulum")
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (rad)")
-plt.grid()
-plt.show()
-```
-
-#### Case 4: Resonance Case
-
-```python
-sol = solve_ivp(forced_damped_pendulum, [0, 50], [0.1, 0], args=(0.1, 1.5, 1.5, 1.5), t_eval=np.linspace(0, 50, 1000))
-plt.plot(sol.t, sol.y[0])
-plt.title("Resonance in Forced Damped Pendulum")
-plt.xlabel("Time (s)")
-plt.ylabel("Angle (rad)")
-plt.grid()
-plt.show()
-```
-
 ---
 
 ## Graphical Analysis
