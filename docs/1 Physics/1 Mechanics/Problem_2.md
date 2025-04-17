@@ -1,4 +1,5 @@
-# Problem 2  
+# Problem 2
+
 # Investigating the Dynamics of a Forced Damped Pendulum
 
 ## Motivation
@@ -34,7 +35,9 @@ Where:
 
 
 This linear non-homogeneous equation allows a solution composed of two parts:  
-- **Transient**: Decaying oscillations due to damping  
+
+- **Transient**: Decaying oscillations due to damping
+
 - **Steady-state**: Driven oscillations at the frequency $\omega$  
 
 #### Resonance Condition
@@ -77,7 +80,6 @@ At certain parameter combinations, the pendulum displays **chaotic motion**—hi
 
 ---
 
-
 ### 4. Implementation: Python Simulation
 
 The following code includes **independent simulations** for each pendulum scenario. Each block shows:
@@ -86,7 +88,8 @@ The following code includes **independent simulations** for each pendulum scenar
 - Phase Portrait (Angle vs Angular Velocity)
 
 Model setup used in all cases:
---- 
+
+---
 
 ## Google Colab
 
