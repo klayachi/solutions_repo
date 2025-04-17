@@ -93,7 +93,8 @@ Model setup used in all cases:
 
 ## Google Colab
 
-You can run this simulation interactively here:  
+You can run this simulation interactively here: 
+
 [▶ Launch Google Colab Simulation](https://colab.research.google.com)
 
 ---
@@ -101,3 +102,7 @@ You can run this simulation interactively here:
 ## Conclusion
 
 The forced damped pendulum illustrates how simple mechanical systems can transition from order to chaos. Through theoretical models and numerical experiments, we gain deep insight into resonance, energy transfer, and complex behavior—insights that impact real systems in engineering, electronics, and the natural world.
+
+´´´python
+import sympy as spy
+´´´
