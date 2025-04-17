@@ -24,12 +24,16 @@ $$
 
 Where:
 
-- $$ \theta(t) $$: Angular displacement  
-- $$ \gamma $$: Damping coefficient  
-- $$ g $$: Gravitational acceleration  
-- $$ L $$: Length of the pendulum  
-- $$ A $$: Amplitude of the driving force  
-- $$ \omega $$: Frequency of the driving force  
+Where:
+
+| Symbol        | Description                         |
+|---------------|-------------------------------------|
+| $$\\theta(t)$$ | Angular displacement                |
+| $$\\gamma$$    | Damping coefficient                 |
+| $$g$$          | Gravitational acceleration          |
+| $$L$$          | Length of the pendulum              |
+| $$A$$          | Amplitude of the driving force      |
+| $$\\omega$$    | Frequency of the driving force      | 
 
 #### Small-Angle Approximation
 
