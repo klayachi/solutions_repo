@@ -43,6 +43,14 @@ $$
 
 This is the generalized form of **Kepler’s Third Law**.
 
+### Constants and Units
+
+- $G = 6.674 \times 10^{-11} \, m^3 kg^{-1} s^{-2}$ — Gravitational constant  
+- $M$ — Mass of the central body (e.g., Earth, Sun)  
+- $r$ — Orbital radius from the center of the mass  
+- $T$ — Orbital period  
+- $v$ — Orbital velocity  
+
 ---
 
 ### 1.2 Kepler Verification using Planet Data
@@ -89,14 +97,6 @@ $$
 M = \frac{4\pi^2 (1.496 \times 10^{11})^3}{6.674 \times 10^{-11} \cdot (3.156 \times 10^7)^2}
 \approx 1.989 \times 10^{30} \text{ kg}
 $$
-
-### 1.2 Constants and Units
-
-- $G = 6.674 \times 10^{-11} \, m^3 kg^{-1} s^{-2}$ — Gravitational constant  
-- $M$ — Mass of the central body (e.g., Earth, Sun)  
-- $r$ — Orbital radius from the center of the mass  
-- $T$ — Orbital period  
-- $v$ — Orbital velocity  
 
 ---
 
