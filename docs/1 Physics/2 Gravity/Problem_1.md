@@ -109,6 +109,7 @@ We implement a Python simulation to verify this relationship numerically.
 You can run the simulation in Google Colab by clicking the link below:
 
 [▶ Run in Google Colab](https://colab.research.google.com/drive/1Sw3WI172-JHEmcuQkl4zm95A0X6ZAAOK?usp=sharing)
+
 ---
 
 ## 5. Visualizations and Interactive Tools
