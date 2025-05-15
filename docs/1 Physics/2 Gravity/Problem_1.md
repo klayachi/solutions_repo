@@ -1,5 +1,5 @@
 
-# Problem 3  
+# Problem 1
 # Orbital Period and Orbital Radius – Exploring Kepler’s Third Law and Beyond
 
 ## Motivation
@@ -47,6 +47,82 @@ $$
 This is the generalized form of **Kepler’s Third Law**.
 
 ---
+
+### 1.2 Full Derivation of Kepler’s Third Law (T² Formula)
+
+Starting with Newton’s Law of Gravitation:
+
+$$
+F = \frac{G M m}{r^2}
+$$
+
+This provides the centripetal force for circular motion:
+
+$$
+F = m \frac{v^2}{r}
+$$
+
+Equating the two:
+
+$$
+\frac{G M m}{r^2} = m \frac{v^2}{r}
+\Rightarrow v^2 = \frac{G M}{r}
+$$
+
+The orbital period is:
+
+$$
+T = \frac{2\pi r}{v}
+= 2\pi \sqrt{\frac{r^3}{G M}} \Rightarrow
+T^2 = \frac{4\pi^2}{G M} r^3
+$$
+
+---
+
+### 1.3 Kepler Verification using Planet Data
+
+Using:
+
+| Planet   | Radius $r$ (m) | Period $T$ (s) |
+|----------|----------------|----------------|
+| Mercury  | $5.79 \times 10^{10}$ | $7.6 \times 10^6$ |
+| Venus    | $1.082 \times 10^{11}$ | $1.94 \times 10^7$ |
+| Earth    | $1.496 \times 10^{11}$ | $3.16 \times 10^7$ |
+| Mars     | $2.279 \times 10^{11}$ | $5.94 \times 10^7$ |
+
+The plot confirms a linear relationship between $T^2$ and $r^3$ as expected.
+
+---
+
+### 1.4 Using Kepler’s Law to Find Mass of Central Body
+
+From the formula:
+
+$$
+T^2 = \frac{4\pi^2 r^3}{G M} \Rightarrow M = \frac{4\pi^2 r^3}{G T^2}
+$$
+
+#### Mass of the Earth
+
+Use Moon’s orbit:
+- $r = 3.84 \times 10^8$ m
+- $T = 27.3 \times 24 \times 3600$ s
+
+$$
+M = \frac{4\pi^2 (3.84 \times 10^8)^3}{6.674 \times 10^{-11} \cdot (2.36 \times 10^6)^2}
+\approx 5.97 \times 10^{24} \text{ kg}
+$$
+
+#### Mass of the Sun
+
+Use Earth’s orbit:
+- $r = 1.496 \times 10^{11}$ m
+- $T = 365.25 \times 24 \times 3600$ s
+
+$$
+M = \frac{4\pi^2 (1.496 \times 10^{11})^3}{6.674 \times 10^{-11} \cdot (3.156 \times 10^7)^2}
+\approx 1.989 \times 10^{30} \text{ kg}
+$$
 
 ### 1.2 Constants and Units
 
@@ -102,9 +178,9 @@ We implement a Python simulation to verify this relationship numerically.
 
 ### **Python Implementation: Kepler's Third Law Verification**
 
-![alt text](image-2.png)
+![alt text](image-4.png)
 
-![alt text](image-3.png)
+![alt text](image-5.png)
 
 You can run the simulation in Google Colab by clicking the link below:
 
@@ -134,78 +210,120 @@ Kepler’s Third Law remains a powerful bridge between classical mechanics and m
 
 ---
 
-## 7. Extended Scientific Discussion
-
-### 7.1 Kepler’s Law as a Consequence of Newtonian Gravity
-
-Kepler’s Third Law is not just empirical—it arises from Newton’s Law of Universal Gravitation. The fact that $T^2 \propto r^3$ for circular orbits means that all mass dependence is encapsulated in the constant:
-
-$$
-k = \frac{4\pi^2}{G M}
-$$
-
-This dependency makes it possible to infer the mass $M$ of the central object (like a star or planet) purely by observing the orbital radius and period of a satellite.
-
-### 7.2 Log-Log Analysis
-
-Taking the logarithm of both sides of Kepler’s Third Law gives:
-
-$$
-\log(T) = \frac{3}{2} \log(r) + \log\left(\sqrt{\frac{4\pi^2}{G M}}\right)
-$$
-
-This shows that in a log-log plot, the slope of the line is always 1.5 — a hallmark of Keplerian motion.
 
 ---
 
-## 8. Additional Practical Examples
+## 🔁 Corrections Based on Professor’s Feedback
 
-### 8.1 Geostationary Orbit
+### ✅ 1. Full Derivation of Kepler’s Third Law (T² Formula)
 
-A geostationary satellite orbits Earth at the same rotational speed of the planet, so it appears fixed above a point on the equator.
-
-- Required orbital period: $T = 86400$ s (1 day)
-- Solving for $r$:
+Starting with Newton’s Law of Gravitation:
 
 $$
-r = \left( \frac{G M T^2}{4\pi^2} \right)^{1/3} \approx 4.22 \times 10^7 \, m
+F = \frac{G M m}{r^2}
 $$
 
-Which corresponds to approximately 35,786 km above Earth's surface.
+This provides the centripetal force for circular motion:
 
-### 8.2 Jupiter’s Moons
+$$
+F = m \frac{v^2}{r}
+$$
 
-Galileo observed the four largest moons of Jupiter: Io, Europa, Ganymede, and Callisto. Their motion confirms Kepler’s law with Jupiter as the central mass.
+Equating the two:
 
-| Moon     | Orbital Radius (m) | Period (s) |
-|----------|--------------------|------------|
-| Io       | $4.22 \times 10^8$ | $1.53 \times 10^5$ |
-| Europa   | $6.71 \times 10^8$ | $3.07 \times 10^5$ |
-| Ganymede | $1.07 \times 10^9$ | $6.19 \times 10^5$ |
-| Callisto | $1.88 \times 10^9$ | $1.44 \times 10^6$ |
+$$
+\frac{G M m}{r^2} = m \frac{v^2}{r}
+\Rightarrow v^2 = \frac{G M}{r}
+$$
 
-Plotting $T^2$ vs $r^3$ for these moons confirms the $T^2 \propto r^3$ relationship.
+The orbital period is:
+
+$$
+T = \frac{2\pi r}{v}
+= 2\pi \sqrt{\frac{r^3}{G M}} \Rightarrow
+T^2 = \frac{4\pi^2}{G M} r^3
+$$
 
 ---
 
-## 9. Limitations and Extensions
+### ✅ 2. Correct Plot: $T^2$ vs $r^3$ (Straight Line)
 
-### 9.1 Assumptions
+We ensure to plot $T^2$ **against** $r^3$ (not $r$!). Here's the code:
 
-- Assumes circular orbits (valid approximation for low-eccentricity orbits)
-- Ignores relativistic corrections (important near massive stars or black holes)
-- Two-body approximation (multi-body interactions ignored)
+```python
+import numpy as np
+import matplotlib.pyplot as plt
 
-### 9.2 Extensions
+# Planetary data [Mercury, Venus, Earth, Mars]
+planet_data = {
+    "Mercury": {"r": 5.79e10, "T": 88 * 24 * 3600},
+    "Venus": {"r": 1.082e11, "T": 225 * 24 * 3600},
+    "Earth": {"r": 1.496e11, "T": 365.25 * 24 * 3600},
+    "Mars": {"r": 2.279e11, "T": 687 * 24 * 3600},
+}
 
-- Elliptical orbits: replace $r$ with semi-major axis $a$
-- Add perturbation theory to account for gravitational influence of other bodies
-- Use numerical integration for irregular systems (e.g. exoplanet systems with resonances)
+r3 = [v["r"]**3 for v in planet_data.values()]
+T2 = [v["T"]**2 for v in planet_data.values()]
+labels = list(planet_data.keys())
+
+plt.figure(figsize=(8,5))
+plt.plot(r3, T2, label="Kepler T² ∝ r³", color='blue')
+plt.scatter(r3, T2, color='red')
+
+for i, txt in enumerate(labels):
+    plt.annotate(txt, (r3[i], T2[i]), fontsize=9)
+
+plt.xlabel("Orbital Radius Cubed $r^3$ (m³)")
+plt.ylabel("Orbital Period Squared $T^2$ (s²)")
+plt.title("Verification of Kepler's Third Law using Solar System Planets")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
 
 ---
 
-## 10. Future Work
+### ✅ 3. Kepler Verification using Planet Data
 
-- Implement orbital simulation with `matplotlib.animation`
-- Visualize elliptical orbits and perihelion shifts
-- Add energy conservation checks: total energy should remain constant in closed systems
+Using:
+
+| Planet   | Radius $r$ (m) | Period $T$ (s) |
+|----------|----------------|----------------|
+| Mercury  | $5.79 \times 10^{10}$ | $7.6 \times 10^6$ |
+| Venus    | $1.082 \times 10^{11}$ | $1.94 \times 10^7$ |
+| Earth    | $1.496 \times 10^{11}$ | $3.16 \times 10^7$ |
+| Mars     | $2.279 \times 10^{11}$ | $5.94 \times 10^7$ |
+
+The plot confirms a linear relationship between $T^2$ and $r^3$ as expected.
+
+---
+
+### ✅ 4. Using Kepler’s Law to Find Mass of Central Body
+
+From the formula:
+
+$$
+T^2 = \frac{4\pi^2 r^3}{G M} \Rightarrow M = \frac{4\pi^2 r^3}{G T^2}
+$$
+
+#### Mass of the Earth
+
+Use Moon’s orbit:
+- $r = 3.84 \times 10^8$ m
+- $T = 27.3 \times 24 \times 3600$ s
+
+$$
+M = \frac{4\pi^2 (3.84 \times 10^8)^3}{6.674 \times 10^{-11} \cdot (2.36 \times 10^6)^2}
+\approx 5.97 \times 10^{24} \text{ kg}
+$$
+
+#### Mass of the Sun
+
+Use Earth’s orbit:
+- $r = 1.496 \times 10^{11}$ m
+- $T = 365.25 \times 24 \times 3600$ s
+
+$$
+M = \frac{4\pi^2 (1.496 \times 10^{11})^3}{6.674 \times 10^{-11} \cdot (3.156 \times 10^7)^2}
+\approx 1.989 \times 10^{30} \text{ kg}
+$$
