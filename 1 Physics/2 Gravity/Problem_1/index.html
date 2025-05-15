@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 3 - Physics and Mathematics</title>
+<title>Problem 1 - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 3";
+        var mkdocs_page_name = "Problem 1";
         var mkdocs_page_input_path = "1 Physics/2 Gravity/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -54,7 +54,7 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">2 Gravity</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 3</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
 </ul>
 </li>
@@ -163,7 +163,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">2 Gravity</li>
-<li class="breadcrumb-item active">Problem 3</li>
+<li class="breadcrumb-item active">Problem 1</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +171,7 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-3">Problem 3</h1>
+<h1 id="problem-1">Problem 1</h1>
 <h1 id="orbital-period-and-orbital-radius-exploring-keplers-third-law-and-beyond">Orbital Period and Orbital Radius – Exploring Kepler’s Third Law and Beyond</h1>
 <h2 id="motivation">Motivation</h2>
 <p>The motion of celestial bodies is governed by a balance of gravitational attraction and inertial motion. One of the most powerful tools to analyze these motions is <strong>Kepler’s Third Law</strong>, which links the orbital period of a body to its orbital radius. Originally derived from planetary observations, this law has since been grounded in Newtonian mechanics and generalized to all two-body orbital systems.</p>
@@ -201,6 +201,83 @@ T^2 = \frac{4\pi^2}{G M} r^3
 \]</div>
 <p>This is the generalized form of <strong>Kepler’s Third Law</strong>.</p>
 <hr/>
+<h3 id="12-full-derivation-of-keplers-third-law-t2-formula">1.2 Full Derivation of Kepler’s Third Law (T² Formula)</h3>
+<p>Starting with Newton’s Law of Gravitation:</p>
+<div class="arithmatex">\[
+F = \frac{G M m}{r^2}
+\]</div>
+<p>This provides the centripetal force for circular motion:</p>
+<div class="arithmatex">\[
+F = m \frac{v^2}{r}
+\]</div>
+<p>Equating the two:</p>
+<div class="arithmatex">\[
+\frac{G M m}{r^2} = m \frac{v^2}{r}
+\Rightarrow v^2 = \frac{G M}{r}
+\]</div>
+<p>The orbital period is:</p>
+<div class="arithmatex">\[
+T = \frac{2\pi r}{v}
+= 2\pi \sqrt{\frac{r^3}{G M}} \Rightarrow
+T^2 = \frac{4\pi^2}{G M} r^3
+\]</div>
+<hr/>
+<h3 id="13-kepler-verification-using-planet-data">1.3 Kepler Verification using Planet Data</h3>
+<p>Using:</p>
+<table>
+<thead>
+<tr>
+<th>Planet</th>
+<th>Radius <span class="arithmatex">\(r\)</span> (m)</th>
+<th>Period <span class="arithmatex">\(T\)</span> (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mercury</td>
+<td><span class="arithmatex">\(5.79 \times 10^{10}\)</span></td>
+<td><span class="arithmatex">\(7.6 \times 10^6\)</span></td>
+</tr>
+<tr>
+<td>Venus</td>
+<td><span class="arithmatex">\(1.082 \times 10^{11}\)</span></td>
+<td><span class="arithmatex">\(1.94 \times 10^7\)</span></td>
+</tr>
+<tr>
+<td>Earth</td>
+<td><span class="arithmatex">\(1.496 \times 10^{11}\)</span></td>
+<td><span class="arithmatex">\(3.16 \times 10^7\)</span></td>
+</tr>
+<tr>
+<td>Mars</td>
+<td><span class="arithmatex">\(2.279 \times 10^{11}\)</span></td>
+<td><span class="arithmatex">\(5.94 \times 10^7\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The plot confirms a linear relationship between <span class="arithmatex">\(T^2\)</span> and <span class="arithmatex">\(r^3\)</span> as expected.</p>
+<hr/>
+<h3 id="14-using-keplers-law-to-find-mass-of-central-body">1.4 Using Kepler’s Law to Find Mass of Central Body</h3>
+<p>From the formula:</p>
+<div class="arithmatex">\[
+T^2 = \frac{4\pi^2 r^3}{G M} \Rightarrow M = \frac{4\pi^2 r^3}{G T^2}
+\]</div>
+<h4 id="mass-of-the-earth">Mass of the Earth</h4>
+<p>Use Moon’s orbit:
+- <span class="arithmatex">\(r = 3.84 \times 10^8\)</span> m
+- <span class="arithmatex">\(T = 27.3 \times 24 \times 3600\)</span> s</p>
+<div class="arithmatex">\[
+M = \frac{4\pi^2 (3.84 \times 10^8)^3}{6.674 \times 10^{-11} \cdot (2.36 \times 10^6)^2}
+\approx 5.97 \times 10^{24} \text{ kg}
+\]</div>
+<h4 id="mass-of-the-sun">Mass of the Sun</h4>
+<p>Use Earth’s orbit:
+- <span class="arithmatex">\(r = 1.496 \times 10^{11}\)</span> m
+- <span class="arithmatex">\(T = 365.25 \times 24 \times 3600\)</span> s</p>
+<div class="arithmatex">\[
+M = \frac{4\pi^2 (1.496 \times 10^{11})^3}{6.674 \times 10^{-11} \cdot (3.156 \times 10^7)^2}
+\approx 1.989 \times 10^{30} \text{ kg}
+\]</div>
 <h3 id="12-constants-and-units">1.2 Constants and Units</h3>
 <ul>
 <li><span class="arithmatex">\(G = 6.674 \times 10^{-11} \, m^3 kg^{-1} s^{-2}\)</span> — Gravitational constant  </li>
@@ -245,8 +322,8 @@ T_{\text{Mars}} \approx 687 \, days
 <h2 id="4-computational-model">4. Computational Model</h2>
 <p>We implement a Python simulation to verify this relationship numerically.</p>
 <h3 id="python-implementation-keplers-third-law-verification"><strong>Python Implementation: Kepler's Third Law Verification</strong></h3>
-<p><img alt="alt text" src="../image-2.png"/></p>
-<p><img alt="alt text" src="../image-3.png"/></p>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<p><img alt="alt text" src="../image-5.png"/></p>
 <p>You can run the simulation in Google Colab by clicking the link below:</p>
 <p><a href="https://colab.research.google.com/drive/1Sw3WI172-JHEmcuQkl4zm95A0X6ZAAOK?usp=sharing">▶ Run in Google Colab</a></p>
 <hr/>
@@ -267,86 +344,117 @@ T_{\text{Mars}} \approx 687 \, days
 <li>Carroll &amp; Ostlie (2017). <em>An Introduction to Modern Astrophysics</em></li>
 </ul>
 <hr/>
-<h2 id="7-extended-scientific-discussion">7. Extended Scientific Discussion</h2>
-<h3 id="71-keplers-law-as-a-consequence-of-newtonian-gravity">7.1 Kepler’s Law as a Consequence of Newtonian Gravity</h3>
-<p>Kepler’s Third Law is not just empirical—it arises from Newton’s Law of Universal Gravitation. The fact that <span class="arithmatex">\(T^2 \propto r^3\)</span> for circular orbits means that all mass dependence is encapsulated in the constant:</p>
-<div class="arithmatex">\[
-k = \frac{4\pi^2}{G M}
-\]</div>
-<p>This dependency makes it possible to infer the mass <span class="arithmatex">\(M\)</span> of the central object (like a star or planet) purely by observing the orbital radius and period of a satellite.</p>
-<h3 id="72-log-log-analysis">7.2 Log-Log Analysis</h3>
-<p>Taking the logarithm of both sides of Kepler’s Third Law gives:</p>
-<div class="arithmatex">\[
-\log(T) = \frac{3}{2} \log(r) + \log\left(\sqrt{\frac{4\pi^2}{G M}}\right)
-\]</div>
-<p>This shows that in a log-log plot, the slope of the line is always 1.5 — a hallmark of Keplerian motion.</p>
 <hr/>
-<h2 id="8-additional-practical-examples">8. Additional Practical Examples</h2>
-<h3 id="81-geostationary-orbit">8.1 Geostationary Orbit</h3>
-<p>A geostationary satellite orbits Earth at the same rotational speed of the planet, so it appears fixed above a point on the equator.</p>
-<ul>
-<li>Required orbital period: <span class="arithmatex">\(T = 86400\)</span> s (1 day)</li>
-<li>Solving for <span class="arithmatex">\(r\)</span>:</li>
-</ul>
+<h2 id="corrections-based-on-professors-feedback">🔁 Corrections Based on Professor’s Feedback</h2>
+<h3 id="1-full-derivation-of-keplers-third-law-t2-formula">✅ 1. Full Derivation of Kepler’s Third Law (T² Formula)</h3>
+<p>Starting with Newton’s Law of Gravitation:</p>
 <div class="arithmatex">\[
-r = \left( \frac{G M T^2}{4\pi^2} \right)^{1/3} \approx 4.22 \times 10^7 \, m
+F = \frac{G M m}{r^2}
 \]</div>
-<p>Which corresponds to approximately 35,786 km above Earth's surface.</p>
-<h3 id="82-jupiters-moons">8.2 Jupiter’s Moons</h3>
-<p>Galileo observed the four largest moons of Jupiter: Io, Europa, Ganymede, and Callisto. Their motion confirms Kepler’s law with Jupiter as the central mass.</p>
+<p>This provides the centripetal force for circular motion:</p>
+<div class="arithmatex">\[
+F = m \frac{v^2}{r}
+\]</div>
+<p>Equating the two:</p>
+<div class="arithmatex">\[
+\frac{G M m}{r^2} = m \frac{v^2}{r}
+\Rightarrow v^2 = \frac{G M}{r}
+\]</div>
+<p>The orbital period is:</p>
+<div class="arithmatex">\[
+T = \frac{2\pi r}{v}
+= 2\pi \sqrt{\frac{r^3}{G M}} \Rightarrow
+T^2 = \frac{4\pi^2}{G M} r^3
+\]</div>
+<hr/>
+<h3 id="2-correct-plot-t2-vs-r3-straight-line">✅ 2. Correct Plot: <span class="arithmatex">\(T^2\)</span> vs <span class="arithmatex">\(r^3\)</span> (Straight Line)</h3>
+<p>We ensure to plot <span class="arithmatex">\(T^2\)</span> <strong>against</strong> <span class="arithmatex">\(r^3\)</span> (not <span class="arithmatex">\(r\)</span>!). Here's the code:</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Planetary data [Mercury, Venus, Earth, Mars]
+planet_data = {
+    "Mercury": {"r": 5.79e10, "T": 88 * 24 * 3600},
+    "Venus": {"r": 1.082e11, "T": 225 * 24 * 3600},
+    "Earth": {"r": 1.496e11, "T": 365.25 * 24 * 3600},
+    "Mars": {"r": 2.279e11, "T": 687 * 24 * 3600},
+}
+
+r3 = [v["r"]**3 for v in planet_data.values()]
+T2 = [v["T"]**2 for v in planet_data.values()]
+labels = list(planet_data.keys())
+
+plt.figure(figsize=(8,5))
+plt.plot(r3, T2, label="Kepler T² ∝ r³", color='blue')
+plt.scatter(r3, T2, color='red')
+
+for i, txt in enumerate(labels):
+    plt.annotate(txt, (r3[i], T2[i]), fontsize=9)
+
+plt.xlabel("Orbital Radius Cubed $r^3$ (m³)")
+plt.ylabel("Orbital Period Squared $T^2$ (s²)")
+plt.title("Verification of Kepler's Third Law using Solar System Planets")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<hr/>
+<h3 id="3-kepler-verification-using-planet-data">✅ 3. Kepler Verification using Planet Data</h3>
+<p>Using:</p>
 <table>
 <thead>
 <tr>
-<th>Moon</th>
-<th>Orbital Radius (m)</th>
-<th>Period (s)</th>
+<th>Planet</th>
+<th>Radius <span class="arithmatex">\(r\)</span> (m)</th>
+<th>Period <span class="arithmatex">\(T\)</span> (s)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Io</td>
-<td><span class="arithmatex">\(4.22 \times 10^8\)</span></td>
-<td><span class="arithmatex">\(1.53 \times 10^5\)</span></td>
+<td>Mercury</td>
+<td><span class="arithmatex">\(5.79 \times 10^{10}\)</span></td>
+<td><span class="arithmatex">\(7.6 \times 10^6\)</span></td>
 </tr>
 <tr>
-<td>Europa</td>
-<td><span class="arithmatex">\(6.71 \times 10^8\)</span></td>
-<td><span class="arithmatex">\(3.07 \times 10^5\)</span></td>
+<td>Venus</td>
+<td><span class="arithmatex">\(1.082 \times 10^{11}\)</span></td>
+<td><span class="arithmatex">\(1.94 \times 10^7\)</span></td>
 </tr>
 <tr>
-<td>Ganymede</td>
-<td><span class="arithmatex">\(1.07 \times 10^9\)</span></td>
-<td><span class="arithmatex">\(6.19 \times 10^5\)</span></td>
+<td>Earth</td>
+<td><span class="arithmatex">\(1.496 \times 10^{11}\)</span></td>
+<td><span class="arithmatex">\(3.16 \times 10^7\)</span></td>
 </tr>
 <tr>
-<td>Callisto</td>
-<td><span class="arithmatex">\(1.88 \times 10^9\)</span></td>
-<td><span class="arithmatex">\(1.44 \times 10^6\)</span></td>
+<td>Mars</td>
+<td><span class="arithmatex">\(2.279 \times 10^{11}\)</span></td>
+<td><span class="arithmatex">\(5.94 \times 10^7\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>Plotting <span class="arithmatex">\(T^2\)</span> vs <span class="arithmatex">\(r^3\)</span> for these moons confirms the <span class="arithmatex">\(T^2 \propto r^3\)</span> relationship.</p>
+<p>The plot confirms a linear relationship between <span class="arithmatex">\(T^2\)</span> and <span class="arithmatex">\(r^3\)</span> as expected.</p>
 <hr/>
-<h2 id="9-limitations-and-extensions">9. Limitations and Extensions</h2>
-<h3 id="91-assumptions">9.1 Assumptions</h3>
-<ul>
-<li>Assumes circular orbits (valid approximation for low-eccentricity orbits)</li>
-<li>Ignores relativistic corrections (important near massive stars or black holes)</li>
-<li>Two-body approximation (multi-body interactions ignored)</li>
-</ul>
-<h3 id="92-extensions">9.2 Extensions</h3>
-<ul>
-<li>Elliptical orbits: replace <span class="arithmatex">\(r\)</span> with semi-major axis <span class="arithmatex">\(a\)</span></li>
-<li>Add perturbation theory to account for gravitational influence of other bodies</li>
-<li>Use numerical integration for irregular systems (e.g. exoplanet systems with resonances)</li>
-</ul>
-<hr/>
-<h2 id="10-future-work">10. Future Work</h2>
-<ul>
-<li>Implement orbital simulation with <code>matplotlib.animation</code></li>
-<li>Visualize elliptical orbits and perihelion shifts</li>
-<li>Add energy conservation checks: total energy should remain constant in closed systems</li>
-</ul>
+<h3 id="4-using-keplers-law-to-find-mass-of-central-body">✅ 4. Using Kepler’s Law to Find Mass of Central Body</h3>
+<p>From the formula:</p>
+<div class="arithmatex">\[
+T^2 = \frac{4\pi^2 r^3}{G M} \Rightarrow M = \frac{4\pi^2 r^3}{G T^2}
+\]</div>
+<h4 id="mass-of-the-earth_1">Mass of the Earth</h4>
+<p>Use Moon’s orbit:
+- <span class="arithmatex">\(r = 3.84 \times 10^8\)</span> m
+- <span class="arithmatex">\(T = 27.3 \times 24 \times 3600\)</span> s</p>
+<div class="arithmatex">\[
+M = \frac{4\pi^2 (3.84 \times 10^8)^3}{6.674 \times 10^{-11} \cdot (2.36 \times 10^6)^2}
+\approx 5.97 \times 10^{24} \text{ kg}
+\]</div>
+<h4 id="mass-of-the-sun_1">Mass of the Sun</h4>
+<p>Use Earth’s orbit:
+- <span class="arithmatex">\(r = 1.496 \times 10^{11}\)</span> m
+- <span class="arithmatex">\(T = 365.25 \times 24 \times 3600\)</span> s</p>
+<div class="arithmatex">\[
+M = \frac{4\pi^2 (1.496 \times 10^{11})^3}{6.674 \times 10^{-11} \cdot (3.156 \times 10^7)^2}
+\approx 1.989 \times 10^{30} \text{ kg}
+\]</div>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
