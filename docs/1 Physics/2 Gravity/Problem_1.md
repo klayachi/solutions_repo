@@ -119,9 +119,9 @@ You can run the simulation in Google Colab by clicking the link below:
 
 ---
 
-## 6. Conclusion:
+## 6. Conclusion
 
-From ancient planetary observations to modern spaceflight, Kepler’s Third Law remains a pillar of gravitational physics. Its elegance lies in its simplicity, and its strength lies in its universality. This expanded analysis shows how classical physics still plays a vital role in understanding both our solar system and exoplanetary systems across the universe.
+Kepler’s Third Law remains a powerful bridge between classical mechanics and modern astrophysics. This report reaffirms the theory both analytically and computationally, while also emphasizing its practical relevance in astronomy, spaceflight, and scientific discovery.
 ---
 
 ## References
