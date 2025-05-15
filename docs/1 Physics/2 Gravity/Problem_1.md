@@ -12,45 +12,9 @@ Understanding this relationship is not only essential in classical astronomy but
 
 ## 1. Theoretical Foundation
 
-### 1.1 Newtonian Derivation of Kepler’s Third Law
+### 1.1 Full Derivation of Kepler’s Third Law (T² Formula)
 
 In a circular orbit, the gravitational force between two bodies provides the required centripetal force:
-
-$$
-F_g = \frac{G M m}{r^2}, \quad F_c = m \frac{v^2}{r}
-$$
-
-Setting these equal:
-
-$$
-\frac{G M m}{r^2} = m \frac{v^2}{r}
-$$
-
-Canceling terms and solving for velocity:
-
-$$
-v = \sqrt{\frac{G M}{r}}
-$$
-
-Orbital period is the circumference divided by speed:
-
-$$
-T = \frac{2\pi r}{v} = 2\pi \sqrt{\frac{r^3}{G M}}
-$$
-
-Squaring both sides:
-
-$$
-T^2 = \frac{4\pi^2}{G M} r^3
-$$
-
-This is the generalized form of **Kepler’s Third Law**.
-
----
-
-### 1.2 Full Derivation of Kepler’s Third Law (T² Formula)
-
-Starting with Newton’s Law of Gravitation:
 
 $$
 F = \frac{G M m}{r^2}
@@ -77,9 +41,11 @@ T = \frac{2\pi r}{v}
 T^2 = \frac{4\pi^2}{G M} r^3
 $$
 
+This is the generalized form of **Kepler’s Third Law**.
+
 ---
 
-### 1.3 Kepler Verification using Planet Data
+### 1.2 Kepler Verification using Planet Data
 
 Using:
 
@@ -94,7 +60,7 @@ The plot confirms a linear relationship between $T^2$ and $r^3$ as expected.
 
 ---
 
-### 1.4 Using Kepler’s Law to Find Mass of Central Body
+### 1.3 Using Kepler’s Law to Find Mass of Central Body
 
 From the formula:
 
