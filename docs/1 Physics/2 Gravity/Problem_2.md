@@ -82,7 +82,7 @@ $$
 
 ## 4. Python Simulation and Visualization
 
-We implement a Python simulation to verify this relationship numerically.
+We implement a Python simulation to verify this:
 
 ![alt text](image-6.png)
 
