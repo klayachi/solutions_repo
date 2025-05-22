@@ -1,4 +1,4 @@
-# Problem 4  
+# Problem 2
 # Scientific Exploration of Escape and Cosmic Velocities
 
 ## 1. Introduction
@@ -82,47 +82,13 @@ $$
 
 ## 4. Python Simulation and Visualization
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+We implement a Python simulation to verify this relationship numerically.
 
-G = 6.674e-11
-M_sun = 1.989e30
+![alt text](image-6.png)
 
-planets = {
-    "Earth": {"M": 5.972e24, "r": 6.371e6, "R": 1.496e11},
-    "Mars": {"M": 6.417e23, "r": 3.389e6, "R": 2.279e11},
-    "Jupiter": {"M": 1.898e27, "r": 6.9911e7, "R": 7.785e11}
-}
+You can run the simulation in Google Colab by clicking the link below:
 
-v1_list, v2_list, v3_list, labels = [], [], [], []
-
-for name, data in planets.items():
-    M, r, R = data["M"], data["r"], data["R"]
-    v1 = np.sqrt(G * M / r)
-    v2 = np.sqrt(2 * G * M / r)
-    vorb = np.sqrt(G * M_sun / R)
-    v3 = np.sqrt(v2**2 + vorb**2)
-    v1_list.append(v1 / 1000)
-    v2_list.append(v2 / 1000)
-    v3_list.append(v3 / 1000)
-    labels.append(name)
-
-x = np.arange(len(labels))
-width = 0.25
-
-plt.figure(figsize=(10,6))
-plt.bar(x - width, v1_list, width, label='First Cosmic (Orbit)', color='skyblue')
-plt.bar(x, v2_list, width, label='Second Cosmic (Escape)', color='orange')
-plt.bar(x + width, v3_list, width, label='Third Cosmic (Solar Escape)', color='green')
-plt.xticks(x, labels)
-plt.ylabel("Velocity (km/s)")
-plt.title("Cosmic Velocities by Planet")
-plt.legend()
-plt.grid(True, axis='y')
-plt.tight_layout()
-plt.show()
-```
+[▶ Run in Google Colab](https://colab.research.google.com/drive/13_RLUHSVElycDClxC8gMMr50RUXkU7C7?usp=sharing)
 
 ---
 
