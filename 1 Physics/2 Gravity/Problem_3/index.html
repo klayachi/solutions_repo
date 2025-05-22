@@ -172,6 +172,136 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-3">Problem 3</h1>
+<h1 id="trajectories-of-a-freely-released-payload-near-earth">Trajectories of a Freely Released Payload Near Earth</h1>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>When a payload is released from a spacecraft near Earth, its path is no longer dictated by propulsion but solely by gravitational interaction. The resulting trajectory—whether an orbital arc, escape route, or reentry—depends on the initial conditions at the moment of release. This investigation explores the governing dynamics, equations, and possible paths, providing essential context for space engineering and mission design.</p>
+<hr/>
+<h2 id="2-gravitational-dynamics-and-force-model">2. Gravitational Dynamics and Force Model</h2>
+<h3 id="21-newtons-law-of-universal-gravitation">2.1 Newton’s Law of Universal Gravitation</h3>
+<p>The gravitational force acting on a payload of mass <span class="arithmatex">\(m\)</span> near Earth is:</p>
+<div class="arithmatex">\[
+\vec{F} = -\frac{G M m}{r^2} \hat{r}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(G = 6.674 \times 10^{-11} \, \text{m}^3/\text{kg} \cdot \text{s}^2\)</span> — gravitational constant<br/>
+- <span class="arithmatex">\(M\)</span> — mass of the Earth (<span class="arithmatex">\(5.972 \times 10^{24} \text{ kg}\)</span>)<br/>
+- <span class="arithmatex">\(r\)</span> — distance from Earth’s center<br/>
+- <span class="arithmatex">\(\hat{r}\)</span> — unit vector directed radially from Earth</p>
+<h3 id="22-equations-of-motion">2.2 Equations of Motion</h3>
+<p>Using Newton’s second law:</p>
+<div class="arithmatex">\[
+m \vec{a} = -\frac{G M m}{r^2} \hat{r} \Rightarrow \vec{a} = -\frac{G M}{r^2} \hat{r}
+\]</div>
+<p>In Cartesian coordinates:</p>
+<div class="arithmatex">\[
+\vec{a} = -\frac{G M}{(x^2 + y^2)^{3/2}} \begin{bmatrix} x \\ y \end{bmatrix}
+\]</div>
+<hr/>
+<h2 id="3-energy-based-trajectory-classification">3. Energy-Based Trajectory Classification</h2>
+<p>The type of path followed by the object is determined by its total mechanical energy:</p>
+<div class="arithmatex">\[
+E = \frac{1}{2} m v^2 - \frac{G M m}{r}
+\]</div>
+<h3 id="31-parabolic-e-0">3.1 Parabolic (E = 0)</h3>
+<p>The velocity equals the escape velocity:</p>
+<div class="arithmatex">\[
+v = v_{\text{esc}} = \sqrt{\frac{2 G M}{r}}
+\]</div>
+<h3 id="32-elliptical-e-0">3.2 Elliptical (E &lt; 0)</h3>
+<p>Bound orbit (closed), energy negative:</p>
+<div class="arithmatex">\[
+v = \sqrt{ G M \left( \frac{2}{r} - \frac{1}{a} \right) }
+\]</div>
+<p>Where <span class="arithmatex">\(a\)</span> is the semi-major axis of the ellipse.</p>
+<h3 id="33-hyperbolic-e-0">3.3 Hyperbolic (E &gt; 0)</h3>
+<p>Escape trajectory, object never returns:</p>
+<div class="arithmatex">\[
+v = \sqrt{ G M \left( \frac{2}{r} + \frac{1}{|a|} \right) }
+\]</div>
+<p>Where <span class="arithmatex">\(a\)</span> is negative for hyperbolic trajectories.</p>
+<hr/>
+<h2 id="4-numerical-method-runge-kutta-4th-order">4. Numerical Method – Runge-Kutta 4th Order</h2>
+<p>The 4th-order Runge-Kutta (RK4) method is used to solve the system:</p>
+<div class="arithmatex">\[
+\frac{d^2\vec{r}}{dt^2} = -\frac{GM}{||\vec{r}||^3} \vec{r}
+\]</div>
+<p>Simulating trajectories involves computing the object's position at each time step based on its gravitational acceleration and velocity using RK4.</p>
+<hr/>
+<h2 id="5-python-simulation-of-parabolic-elliptical-and-hyperbolic-paths">5. Python Simulation of Parabolic, Elliptical, and Hyperbolic Paths</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+G = 6.674e-11
+M = 5.972e24
+R_earth = 6.371e6
+
+def acceleration(r):
+    norm = np.linalg.norm(r)
+    return -G * M * r / norm**3
+
+def rk4_step(r, v, dt):
+    k1v = acceleration(r)
+    k1r = v
+    k2v = acceleration(r + 0.5 * dt * k1r)
+    k2r = v + 0.5 * dt * k1v
+    k3v = acceleration(r + 0.5 * dt * k2r)
+    k3r = v + 0.5 * dt * k2v
+    k4v = acceleration(r + dt * k3r)
+    k4r = v + dt * k3v
+    r_next = r + dt/6 * (k1r + 2*k2r + 2*k3r + k4r)
+    v_next = v + dt/6 * (k1v + 2*k2v + 2*k3v + k4v)
+    return r_next, v_next
+
+# Initial setup
+r0 = np.array([R_earth + 300e3, 0])
+v_escape = np.sqrt(2 * G * M / np.linalg.norm(r0))
+v_orbit = np.sqrt(G * M / np.linalg.norm(r0))
+v_hyper = v_escape * 1.2
+
+initials = {
+    "Elliptical": np.array([0, v_orbit * 0.8]),
+    "Parabolic": np.array([0, v_escape]),
+    "Hyperbolic": np.array([0, v_hyper])
+}
+
+dt = 1
+steps = 10000
+
+plt.figure(figsize=(8, 8))
+for label, v0 in initials.items():
+    r = r0.copy()
+    v = v0.copy()
+    traj = [r.copy()]
+    for _ in range(steps):
+        r, v = rk4_step(r, v, dt)
+        if np.linalg.norm(r) &gt; 20 * R_earth:
+            break
+        traj.append(r.copy())
+    traj = np.array(traj)
+    plt.plot(traj[:,0]/1e6, traj[:,1]/1e6, label=label)
+
+# Draw Earth
+earth = plt.Circle((0, 0), R_earth/1e6, color='blue', alpha=0.3)
+plt.gca().add_patch(earth)
+plt.xlabel("x (Mm)")
+plt.ylabel("y (Mm)")
+plt.title("Simulated Payload Trajectories Near Earth")
+plt.legend()
+plt.axis('equal')
+plt.grid()
+plt.tight_layout()
+plt.show()
+</code></pre>
+<hr/>
+<h2 id="6-practical-applications">6. Practical Applications</h2>
+<ul>
+<li><strong>Satellite Launch Windows</strong>: Ensure payload enters desired orbital path</li>
+<li><strong>Reentry Dynamics</strong>: Calculate trajectories for safe descent and recovery</li>
+<li><strong>Mission Planning</strong>: High-velocity releases determine escape paths for interplanetary transfer</li>
+</ul>
+<hr/>
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>By integrating Newtonian gravity with energy and velocity constraints, this study provides a complete view of gravitational trajectories. Through numerical simulation, parabolic, elliptical, and hyperbolic dynamics are modeled, showing how initial velocity alone determines the mission outcome.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
