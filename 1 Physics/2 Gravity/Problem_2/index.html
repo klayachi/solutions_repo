@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>Problem 4 - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Problem 4";
         var mkdocs_page_input_path = "1 Physics/2 Gravity/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -56,7 +56,7 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 4</a>
 <ul class="current">
 </ul>
 </li>
@@ -163,7 +163,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">2 Gravity</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Problem 4</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,8 +171,121 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
-<p><img alt="alt text" src="../image-1.png"/></p>
+<h1 id="problem-4">Problem 4</h1>
+<h1 id="scientific-exploration-of-escape-and-cosmic-velocities">Scientific Exploration of Escape and Cosmic Velocities</h1>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>In the realm of astrodynamics, the ability to overcome gravitational constraints is described through <strong>cosmic velocities</strong>. These critical velocities determine the energy needed for orbital insertion, planetary escape, and departure from the solar system. The classification is:</p>
+<ul>
+<li><strong>First Cosmic Velocity (<span class="arithmatex">\(v_1\)</span>)</strong> – Minimum velocity to remain in circular orbit</li>
+<li><strong>Second Cosmic Velocity (<span class="arithmatex">\(v_2\)</span>)</strong> – Escape velocity from a celestial body</li>
+<li><strong>Third Cosmic Velocity (<span class="arithmatex">\(v_3\)</span>)</strong> – Escape velocity from the central star (e.g., the Sun)</li>
+</ul>
+<p>These are cornerstones for space missions and planetary science, directly influencing mission architecture and propulsion requirements.</p>
+<hr/>
+<h2 id="2-theoretical-derivation">2. Theoretical Derivation</h2>
+<h3 id="21-first-cosmic-velocity-v_1">2.1 First Cosmic Velocity (<span class="arithmatex">\(v_1\)</span>)</h3>
+<p>Defined by the balance of gravitational and centripetal forces:</p>
+<div class="arithmatex">\[
+\frac{G M m}{r^2} = m \frac{v_1^2}{r} \Rightarrow v_1 = \sqrt{\frac{G M}{r}}
+\]</div>
+<h3 id="22-second-cosmic-velocity-v_2">2.2 Second Cosmic Velocity (<span class="arithmatex">\(v_2\)</span>)</h3>
+<p>Derived from energy conservation: total mechanical energy equals zero when escaping to infinity.</p>
+<div class="arithmatex">\[
+\frac{1}{2} m v_2^2 - \frac{G M m}{r} = 0 \Rightarrow v_2 = \sqrt{\frac{2 G M}{r}}
+\]</div>
+<h3 id="23-third-cosmic-velocity-v_3">2.3 Third Cosmic Velocity (<span class="arithmatex">\(v_3\)</span>)</h3>
+<p>To leave the gravitational field of both the planet and its host star, assuming launch from the planet:</p>
+<div class="arithmatex">\[
+v_3 = \sqrt{v_2^2 + v_{\text{orb}}^2}, \quad v_{\text{orb}} = \sqrt{\frac{G M_s}{R}}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(M_s\)</span> is the Sun’s mass
+- <span class="arithmatex">\(R\)</span> is orbital radius of the planet</p>
+<hr/>
+<h2 id="3-numerical-calculations-earth-mars-jupiter">3. Numerical Calculations (Earth, Mars, Jupiter)</h2>
+<p>Constants:
+- <span class="arithmatex">\(G = 6.674 \times 10^{-11} \text{ m}^3/\text{kg} \cdot \text{s}^2\)</span>
+- <span class="arithmatex">\(M_\odot = 1.989 \times 10^{30} \text{ kg}\)</span></p>
+<h3 id="earth">Earth:</h3>
+<ul>
+<li><span class="arithmatex">\(M = 5.972 \times 10^{24}\)</span> kg  </li>
+<li><span class="arithmatex">\(r = 6.371 \times 10^6\)</span> m  </li>
+<li><span class="arithmatex">\(R = 1.496 \times 10^{11}\)</span> m</li>
+</ul>
+<div class="arithmatex">\[
+v_1 = 7.91 \text{ km/s},\quad v_2 = 11.2 \text{ km/s},\quad v_3 = 42.1 \text{ km/s}
+\]</div>
+<h3 id="mars">Mars:</h3>
+<ul>
+<li><span class="arithmatex">\(M = 6.417 \times 10^{23}\)</span> kg  </li>
+<li><span class="arithmatex">\(r = 3.389 \times 10^6\)</span> m  </li>
+<li><span class="arithmatex">\(R = 2.279 \times 10^{11}\)</span> m</li>
+</ul>
+<div class="arithmatex">\[
+v_1 = 3.55 \text{ km/s},\quad v_2 = 5.0 \text{ km/s},\quad v_3 = 34.1 \text{ km/s}
+\]</div>
+<h3 id="jupiter">Jupiter:</h3>
+<ul>
+<li><span class="arithmatex">\(M = 1.898 \times 10^{27}\)</span> kg  </li>
+<li><span class="arithmatex">\(r = 6.9911 \times 10^7\)</span> m  </li>
+<li><span class="arithmatex">\(R = 7.785 \times 10^{11}\)</span> m</li>
+</ul>
+<div class="arithmatex">\[
+v_1 = 42.0 \text{ km/s},\quad v_2 = 59.5 \text{ km/s},\quad v_3 = 70.3 \text{ km/s}
+\]</div>
+<hr/>
+<h2 id="4-python-simulation-and-visualization">4. Python Simulation and Visualization</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+G = 6.674e-11
+M_sun = 1.989e30
+
+planets = {
+    "Earth": {"M": 5.972e24, "r": 6.371e6, "R": 1.496e11},
+    "Mars": {"M": 6.417e23, "r": 3.389e6, "R": 2.279e11},
+    "Jupiter": {"M": 1.898e27, "r": 6.9911e7, "R": 7.785e11}
+}
+
+v1_list, v2_list, v3_list, labels = [], [], [], []
+
+for name, data in planets.items():
+    M, r, R = data["M"], data["r"], data["R"]
+    v1 = np.sqrt(G * M / r)
+    v2 = np.sqrt(2 * G * M / r)
+    vorb = np.sqrt(G * M_sun / R)
+    v3 = np.sqrt(v2**2 + vorb**2)
+    v1_list.append(v1 / 1000)
+    v2_list.append(v2 / 1000)
+    v3_list.append(v3 / 1000)
+    labels.append(name)
+
+x = np.arange(len(labels))
+width = 0.25
+
+plt.figure(figsize=(10,6))
+plt.bar(x - width, v1_list, width, label='First Cosmic (Orbit)', color='skyblue')
+plt.bar(x, v2_list, width, label='Second Cosmic (Escape)', color='orange')
+plt.bar(x + width, v3_list, width, label='Third Cosmic (Solar Escape)', color='green')
+plt.xticks(x, labels)
+plt.ylabel("Velocity (km/s)")
+plt.title("Cosmic Velocities by Planet")
+plt.legend()
+plt.grid(True, axis='y')
+plt.tight_layout()
+plt.show()
+</code></pre>
+<hr/>
+<h2 id="5-applications-in-modern-astrophysics">5. Applications in Modern Astrophysics</h2>
+<ul>
+<li><strong>Rocket launch phases</strong>: Optimize fuel for achieving <span class="arithmatex">\(v_1\)</span> and <span class="arithmatex">\(v_2\)</span></li>
+<li><strong>Escape planning</strong>: Design of escape trajectories for Mars missions</li>
+<li><strong>Gravity assist</strong>: Use <span class="arithmatex">\(v_3\)</span> targeting and orbital boosts</li>
+<li><strong>Astrobiology</strong>: Analyze which exoplanets can retain atmospheres based on <span class="arithmatex">\(v_2\)</span></li>
+</ul>
+<hr/>
+<h2 id="6-conclusion">6. Conclusion</h2>
+<p>Cosmic velocities form the physics backbone of spaceflight. Understanding <span class="arithmatex">\(v_1\)</span>, <span class="arithmatex">\(v_2\)</span>, and <span class="arithmatex">\(v_3\)</span> allows for precise trajectory design, spacecraft staging, and mission profiling. These concepts remain indispensable for both current missions and future interstellar ambitions.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
