@@ -98,6 +98,8 @@ You can run the simulation in Google Colab by clicking the link below:
 
 ![alt text](image-8.png)
 
+You can run the simulation in Google Colab by clicking the link below:
+
 [▶ Run in Google Colab](https://colab.research.google.com/drive/1DWkJbRjLHnmaCxZJ56LBOqw4I4w94t6T?usp=sharing)
 
 ---
