@@ -82,7 +82,7 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#step-2-position-the-sources">Step 2: Position the Sources</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#step-3-compute-the-total-wave-displacement">Step 3: Compute the Total Wave Displacement</a>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-python-simulation-and-visualization">Step 3: Python Simulation and Visualization</a>
 </li>
 </ul>
 </li>
@@ -230,9 +230,12 @@
 (x_i, y_i) = (R \cos \theta_i, R \sin \theta_i),\quad \theta_i = \frac{2\pi i}{N},\ i = 0,1,...,N-1
 \]</div>
 <p>Where <span class="arithmatex">\(R = 1.5\)</span> and <span class="arithmatex">\(N = 4\)</span>.</p>
-<h3 id="step-3-compute-the-total-wave-displacement">Step 3: Compute the Total Wave Displacement</h3>
-<p>Using a grid over the domain <span class="arithmatex">\([-3, 3] \times [-3, 3]\)</span>, the wave field from each source is computed and summed:</p>
-<p><img alt="alt text" src="../image.png"/></p>
+<h3 id="step-3-python-simulation-and-visualization">Step 3: Python Simulation and Visualization</h3>
+<p>We implement a Python simulation to verify this:</p>
+<p><img alt="alt text" src="../wave_1_source.gif"/></p>
+<p><img alt="alt text" src="../wave_2_sources.gif"/></p>
+<p><img alt="alt text" src="../wave_interference_triangle.gif"/></p>
+<p><img alt="alt text" src="../wave_interference_pentagon.gif"/></p>
 <p>You can run the simulation in Google Colab by clicking the link below:</p>
 <p><a href="https://colab.research.google.com/drive/1o544Tj5ZidzpNpAdmvGfC_mbXPoAm2nF?usp=sharing">▶ Run in Google Colab</a></p>
 <hr/>
