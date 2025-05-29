@@ -53,11 +53,17 @@ $$
 
 Where $R = 1.5$ and $N = 4$.
 
-### Step 3: Compute the Total Wave Displacement
+### Step 3: Python Simulation and Visualization
 
-Using a grid over the domain $[-3, 3] \times [-3, 3]$, the wave field from each source is computed and summed:
+We implement a Python simulation to verify this:
 
-![alt text](image.png)
+![alt text](wave_1_source.gif)
+
+![alt text](wave_2_sources.gif)
+
+![alt text](wave_interference_triangle.gif)
+
+![alt text](wave_interference_pentagon.gif)
 
 You can run the simulation in Google Colab by clicking the link below:
 
