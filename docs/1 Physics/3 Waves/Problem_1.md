@@ -61,6 +61,8 @@ We implement a Python simulation to verify this:
 
 ![alt text](wave_2_sources.gif)
 
+![alt text](interference_3d.gif)
+
 ![alt text](wave_interference_triangle.gif)
 
 ![alt text](wave_interference_pentagon.gif)
