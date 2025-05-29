@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Problem 1: Simulating the Effects of the Lorentz Force - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Problem 1: Simulating the Effects of the Lorentz Force";
         var mkdocs_page_input_path = "1 Physics/4 Electromagnetism/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -70,8 +70,34 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">4 Electromagnetism</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1: Simulating the Effects of the Lorentz Force</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#1-applications-of-lorentz-force">1. Applications of Lorentz Force</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#real-world-relevance">Real-World Relevance</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#role-of-fields">Role of Fields</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-equations-and-simulated-scenarios">2. Equations and Simulated Scenarios</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-parameters-and-analysis">3. Parameters and Analysis</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#larmor-radius">Larmor Radius</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-visualization-goals">4. Visualization Goals</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#expected-simulations">Expected Simulations</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +189,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">4 Electromagnetism</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Problem 1: Simulating the Effects of the Lorentz Force</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +197,65 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-simulating-the-effects-of-the-lorentz-force">Problem 1: Simulating the Effects of the Lorentz Force</h1>
+<h2 id="motivation">Motivation</h2>
+<p>The Lorentz force governs the behavior of charged particles in electric and magnetic fields:</p>
+<div class="arithmatex">\[
+\vec{F} = q \vec{E} + q\vec{v} \times \vec{B}
+\]</div>
+<p>This principle is foundational in understanding phenomena such as particle accelerators, mass spectrometry, plasma confinement, and auroras. Simulating the motion of particles under various electromagnetic conditions enables practical comprehension of their trajectories and interactions.</p>
+<hr/>
+<h2 id="1-applications-of-lorentz-force">1. Applications of Lorentz Force</h2>
+<h3 id="real-world-relevance">Real-World Relevance</h3>
+<ul>
+<li><strong>Cyclotrons</strong>: Employ time-varying electric fields and static magnetic fields to accelerate charged particles.</li>
+<li><strong>Mass Spectrometers</strong>: Use magnetic fields to bend the paths of ions for mass analysis.</li>
+<li><strong>Tokamaks</strong>: Utilize magnetic confinement to control high-temperature plasmas in nuclear fusion experiments.</li>
+<li><strong>Auroras</strong>: Caused by solar particles spiraling along Earth’s magnetic field lines into the atmosphere.</li>
+</ul>
+<h3 id="role-of-fields">Role of Fields</h3>
+<ul>
+<li><strong>Electric Field (<span class="arithmatex">\(\vec{E}\)</span>)</strong>: Induces linear acceleration.</li>
+<li><strong>Magnetic Field (<span class="arithmatex">\(\vec{B}\)</span>)</strong>: Produces circular or helical motion.</li>
+<li><strong>Crossed Fields (<span class="arithmatex">\(\vec{E} \perp \vec{B}\)</span>)</strong>: Lead to <span class="arithmatex">\(\vec{E} \times \vec{B}\)</span> drift — a critical motion in plasma physics.</li>
+</ul>
+<hr/>
+<h2 id="2-equations-and-simulated-scenarios">2. Equations and Simulated Scenarios</h2>
+<p>The motion of a charged particle with mass <span class="arithmatex">\(m\)</span> and charge <span class="arithmatex">\(q\)</span> is described by:</p>
+<div class="arithmatex">\[
+\vec{a} = \frac{d\vec{v}}{dt} = \frac{q}{m}(\vec{E} + \vec{v} \times \vec{B})
+\]</div>
+<p>We solve these equations using the <strong>Runge-Kutta 4th Order Method</strong> for three distinct cases:</p>
+<ol>
+<li><strong>Uniform Magnetic Field</strong>: <span class="arithmatex">\(\vec{B}\)</span> along <span class="arithmatex">\(z\)</span>, <span class="arithmatex">\(\vec{E}=0\)</span> → Expect circular or helical motion.</li>
+<li><strong>Crossed Fields</strong>: <span class="arithmatex">\(\vec{E}\)</span> along <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(\vec{B}\)</span> along <span class="arithmatex">\(z\)</span> → Expect <span class="arithmatex">\(\vec{E} \times \vec{B}\)</span> drift.</li>
+<li><strong>Combined <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span></strong>: Expect helical motion with linear acceleration.</li>
+</ol>
+<hr/>
+<h2 id="3-parameters-and-analysis">3. Parameters and Analysis</h2>
+<ul>
+<li><strong>Electric Field Magnitude</strong>: Alters linear acceleration.</li>
+<li><strong>Magnetic Field Strength</strong>: Changes curvature (Larmor radius).</li>
+<li><strong>Initial Velocity</strong>: Determines orbit shape (circular vs helical).</li>
+<li><strong>Particle Mass and Charge</strong>: Influence acceleration scale and trajectory direction.</li>
+</ul>
+<h3 id="larmor-radius">Larmor Radius</h3>
+<p>For perpendicular velocity <span class="arithmatex">\(v_\perp\)</span>:</p>
+<div class="arithmatex">\[
+R_L = \frac{mv_\perp}{qB}
+\]</div>
+<hr/>
+<h2 id="4-visualization-goals">4. Visualization Goals</h2>
+<h3 id="expected-simulations">Expected Simulations</h3>
+<ul>
+<li>Circular path under <span class="arithmatex">\(\vec{B}\)</span> alone.</li>
+<li>Lateral drift in crossed <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span> fields.</li>
+<li>Helical expansion when <span class="arithmatex">\(\vec{E}\)</span> and <span class="arithmatex">\(\vec{B}\)</span> fields coexist.</li>
+</ul>
+<p>These animations reveal the dynamic behavior of particles under realistic electromagnetic conditions.</p>
+<hr/>
+<h2 id="conclusion">Conclusion</h2>
+<p>Understanding the Lorentz force and its effects is essential in electromagnetism and applications like particle confinement and space physics. The provided simulations replicate these scenarios and aid in grasping the underlying physics through visual and quantitative analysis.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
