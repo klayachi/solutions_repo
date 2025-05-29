@@ -232,45 +232,9 @@
 <p>Where <span class="arithmatex">\(R = 1.5\)</span> and <span class="arithmatex">\(N = 4\)</span>.</p>
 <h3 id="step-3-compute-the-total-wave-displacement">Step 3: Compute the Total Wave Displacement</h3>
 <p>Using a grid over the domain <span class="arithmatex">\([-3, 3] \times [-3, 3]\)</span>, the wave field from each source is computed and summed:</p>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Grid setup
-x = np.linspace(-3, 3, 500)
-y = np.linspace(-3, 3, 500)
-X, Y = np.meshgrid(x, y)
-
-# Wave parameters
-A = 1
-wavelength = 1.0
-frequency = 1.0
-k = 2 * np.pi / wavelength
-omega = 2 * np.pi * frequency
-t = 0
-
-# Source positions (square vertices)
-R = 1.5
-N = 4
-sources = [(R * np.cos(2 * np.pi * i / N), R * np.sin(2 * np.pi * i / N)) for i in range(N)]
-
-# Compute wave field
-eta = np.zeros_like(X)
-for x0, y0 in sources:
-    r = np.sqrt((X - x0)**2 + (Y - y0)**2)
-    eta += A * np.cos(k * r - omega * t) / np.sqrt(r + 1e-6)
-
-# Plot
-plt.figure(figsize=(8, 6))
-plt.contourf(X, Y, eta, levels=100, cmap='coolwarm')
-plt.colorbar(label='Wave Displacement')
-plt.title("Interference Pattern from 4 Point Sources (Square)")
-plt.xlabel("x [units]")
-plt.ylabel("y [units]")
-plt.axis('equal')
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-</code></pre>
+<p><img alt="alt text" src="../image.png"/></p>
+<p>You can run the simulation in Google Colab by clicking the link below:</p>
+<p><a href="https://colab.research.google.com/drive/1o544Tj5ZidzpNpAdmvGfC_mbXPoAm2nF?usp=sharing">▶ Run in Google Colab</a></p>
 <hr/>
 <h2 id="interpretation-and-analysis">Interpretation and Analysis</h2>
 <ul>
