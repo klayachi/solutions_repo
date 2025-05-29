@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Problem 1: Interference Patterns on a Water Surface - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Problem 1: Interference Patterns on a Water Surface";
         var mkdocs_page_input_path = "1 Physics/3 Waves/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -64,8 +64,34 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal current">3 Waves</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1: Interference Patterns on a Water Surface</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#theoretical-background">Theoretical Background</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#wave-equation-for-a-single-source">Wave Equation for a Single Source</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#superposition-of-multiple-waves">Superposition of Multiple Waves</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step-solution">Step-by-Step Solution</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-choose-a-regular-polygon">Step 1: Choose a Regular Polygon</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-position-the-sources">Step 2: Position the Sources</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-compute-the-total-wave-displacement">Step 3: Compute the Total Wave Displacement</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interpretation-and-analysis">Interpretation and Analysis</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#real-world-relevance">Real-World Relevance</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">Conclusion</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +189,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">3 Waves</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Problem 1: Interference Patterns on a Water Surface</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +197,98 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-1">Problem 1</h1>
+<h1 id="problem-1-interference-patterns-on-a-water-surface">Problem 1: Interference Patterns on a Water Surface</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Wave interference is a fundamental concept in physics, observed in numerous contexts such as water surfaces, optics, acoustics, and quantum mechanics. On a water surface, interference patterns arise when circular waves from multiple sources overlap. These patterns are manifestations of the superposition principle, which states that when two or more waves meet, their displacements add together at each point in space.</p>
+<p>Understanding interference not only offers insight into basic wave behavior but also lays the groundwork for understanding phenomena like diffraction, standing waves, and coherent wave interactions.</p>
+<hr/>
+<h2 id="theoretical-background">Theoretical Background</h2>
+<h3 id="wave-equation-for-a-single-source">Wave Equation for a Single Source</h3>
+<p>The vertical displacement <span class="arithmatex">\(\eta(x, y, t)\)</span> of the water surface at point <span class="arithmatex">\((x, y)\)</span> due to a point source at <span class="arithmatex">\((x_0, y_0)\)</span> is modeled by the following expression:</p>
+<div class="arithmatex">\[
+\eta(x, y, t) = \frac{A}{\sqrt{r}} \cos(kr - \omega t + \phi)
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(A\)</span> is the amplitude of the wave.
+- <span class="arithmatex">\(r = \sqrt{(x - x_0)^2 + (y - y_0)^2}\)</span> is the distance from the point source.
+- <span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span> is the wave number.
+- <span class="arithmatex">\(\omega = 2\pi f\)</span> is the angular frequency.
+- <span class="arithmatex">\(\phi\)</span> is the phase offset.</p>
+<h3 id="superposition-of-multiple-waves">Superposition of Multiple Waves</h3>
+<p>The total disturbance due to <span class="arithmatex">\(N\)</span> sources is given by:</p>
+<div class="arithmatex">\[
+\eta_{\text{total}}(x, y, t) = \sum_{i=1}^{N} \eta_i(x, y, t)
+\]</div>
+<p>This equation holds for linear, small-amplitude waves where the superposition principle applies.</p>
+<hr/>
+<h2 id="step-by-step-solution">Step-by-Step Solution</h2>
+<h3 id="step-1-choose-a-regular-polygon">Step 1: Choose a Regular Polygon</h3>
+<p>We choose a <strong>square</strong> — a regular polygon with four equal sides. This symmetric arrangement is ideal for observing rich and predictable interference patterns.</p>
+<h3 id="step-2-position-the-sources">Step 2: Position the Sources</h3>
+<p>The point sources are placed at the vertices of a square centered at the origin. If <span class="arithmatex">\(R\)</span> is the radius of the circumscribed circle, the coordinates are given by:</p>
+<div class="arithmatex">\[
+(x_i, y_i) = (R \cos \theta_i, R \sin \theta_i),\quad \theta_i = \frac{2\pi i}{N},\ i = 0,1,...,N-1
+\]</div>
+<p>Where <span class="arithmatex">\(R = 1.5\)</span> and <span class="arithmatex">\(N = 4\)</span>.</p>
+<h3 id="step-3-compute-the-total-wave-displacement">Step 3: Compute the Total Wave Displacement</h3>
+<p>Using a grid over the domain <span class="arithmatex">\([-3, 3] \times [-3, 3]\)</span>, the wave field from each source is computed and summed:</p>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Grid setup
+x = np.linspace(-3, 3, 500)
+y = np.linspace(-3, 3, 500)
+X, Y = np.meshgrid(x, y)
+
+# Wave parameters
+A = 1
+wavelength = 1.0
+frequency = 1.0
+k = 2 * np.pi / wavelength
+omega = 2 * np.pi * frequency
+t = 0
+
+# Source positions (square vertices)
+R = 1.5
+N = 4
+sources = [(R * np.cos(2 * np.pi * i / N), R * np.sin(2 * np.pi * i / N)) for i in range(N)]
+
+# Compute wave field
+eta = np.zeros_like(X)
+for x0, y0 in sources:
+    r = np.sqrt((X - x0)**2 + (Y - y0)**2)
+    eta += A * np.cos(k * r - omega * t) / np.sqrt(r + 1e-6)
+
+# Plot
+plt.figure(figsize=(8, 6))
+plt.contourf(X, Y, eta, levels=100, cmap='coolwarm')
+plt.colorbar(label='Wave Displacement')
+plt.title("Interference Pattern from 4 Point Sources (Square)")
+plt.xlabel("x [units]")
+plt.ylabel("y [units]")
+plt.axis('equal')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+</code></pre>
+<hr/>
+<h2 id="interpretation-and-analysis">Interpretation and Analysis</h2>
+<ul>
+<li><strong>Constructive Interference</strong>: Regions where wave crests align — resulting in high amplitude.</li>
+<li><strong>Destructive Interference</strong>: Locations where crests meet troughs — resulting in cancellation.</li>
+<li><strong>Symmetry</strong>: The square configuration creates symmetric cross-like wavefronts.</li>
+<li><strong>Wave Nodes and Antinodes</strong>: These emerge clearly and represent points of zero and maximum displacement.</li>
+</ul>
+<hr/>
+<h2 id="real-world-relevance">Real-World Relevance</h2>
+<ul>
+<li><strong>Acoustics</strong>: Speaker arrays and concert hall acoustics leverage interference.</li>
+<li><strong>Optics</strong>: Interference explains diffraction and the working of interferometers.</li>
+<li><strong>Engineering</strong>: Structural vibrations and modal patterns are analyzed using interference.</li>
+</ul>
+<hr/>
+<h2 id="conclusion">Conclusion</h2>
+<p>This simulation confirms the emergence of structured interference patterns from four coherent point sources arranged in a square. The resulting patterns showcase fundamental wave phenomena and help bridge theoretical physics with real-world systems.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
