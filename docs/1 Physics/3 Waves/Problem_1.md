@@ -57,46 +57,11 @@ Where $R = 1.5$ and $N = 4$.
 
 Using a grid over the domain $[-3, 3] \times [-3, 3]$, the wave field from each source is computed and summed:
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+![alt text](image.png)
 
-# Grid setup
-x = np.linspace(-3, 3, 500)
-y = np.linspace(-3, 3, 500)
-X, Y = np.meshgrid(x, y)
+You can run the simulation in Google Colab by clicking the link below:
 
-# Wave parameters
-A = 1
-wavelength = 1.0
-frequency = 1.0
-k = 2 * np.pi / wavelength
-omega = 2 * np.pi * frequency
-t = 0
-
-# Source positions (square vertices)
-R = 1.5
-N = 4
-sources = [(R * np.cos(2 * np.pi * i / N), R * np.sin(2 * np.pi * i / N)) for i in range(N)]
-
-# Compute wave field
-eta = np.zeros_like(X)
-for x0, y0 in sources:
-    r = np.sqrt((X - x0)**2 + (Y - y0)**2)
-    eta += A * np.cos(k * r - omega * t) / np.sqrt(r + 1e-6)
-
-# Plot
-plt.figure(figsize=(8, 6))
-plt.contourf(X, Y, eta, levels=100, cmap='coolwarm')
-plt.colorbar(label='Wave Displacement')
-plt.title("Interference Pattern from 4 Point Sources (Square)")
-plt.xlabel("x [units]")
-plt.ylabel("y [units]")
-plt.axis('equal')
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-```
+[▶ Run in Google Colab](https://colab.research.google.com/drive/1o544Tj5ZidzpNpAdmvGfC_mbXPoAm2nF?usp=sharing)
 
 ---
 
