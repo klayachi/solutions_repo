@@ -40,6 +40,8 @@ $$
 
 We solve these equations using the **Runge-Kutta 4th Order Method** for three distinct cases:
 
+![alt text](image.png)
+
 1. **Uniform Magnetic Field**: $\vec{B}$ along $z$, $\vec{E}=0$ → Expect circular or helical motion.
 2. **Crossed Fields**: $\vec{E}$ along $x$, $\vec{B}$ along $z$ → Expect $\vec{E} \times \vec{B}$ drift.
 3. **Combined $\vec{E}$ and $\vec{B}$**: Expect helical motion with linear acceleration.
@@ -73,8 +75,18 @@ $$
 
 These animations reveal the dynamic behavior of particles under realistic electromagnetic conditions.
 
+![alt text](lorentz_helix.gif)
+
+![alt text](exb_drift.gif)
+
+![alt text](helical_accel.gif)
+
 ---
 
 ## Conclusion
 
 Understanding the Lorentz force and its effects is essential in electromagnetism and applications like particle confinement and space physics. The provided simulations replicate these scenarios and aid in grasping the underlying physics through visual and quantitative analysis.
+
+You can run the simulation in Google Colab by clicking the link below:
+
+[▶ Run in Google Colab](https://colab.research.google.com/drive/1o9pL5RthJEtk_sVPVrJb_1L1kuMht_uM?usp=sharing)
