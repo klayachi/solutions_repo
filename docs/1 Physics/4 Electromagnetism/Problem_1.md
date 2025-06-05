@@ -40,7 +40,11 @@ $$
 
 We solve these equations using the **Runge-Kutta 4th Order Method** for three distinct cases:
 
-![alt text](image.png)
+![alt text](image-1.png)
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
 
 1. **Uniform Magnetic Field**: $\vec{B}$ along $z$, $\vec{E}=0$ → Expect circular or helical motion.
 2. **Crossed Fields**: $\vec{E}$ along $x$, $\vec{B}$ along $z$ → Expect $\vec{E} \times \vec{B}$ drift.
@@ -74,12 +78,6 @@ $$
 - Helical expansion when $\vec{E}$ and $\vec{B}$ fields coexist.
 
 These animations reveal the dynamic behavior of particles under realistic electromagnetic conditions.
-
-![alt text](lorentz_helix.gif)
-
-![alt text](exb_drift.gif)
-
-![alt text](helical_accel.gif)
 
 ---
 
