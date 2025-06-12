@@ -172,6 +172,115 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="exploring-the-central-limit-theorem-through-simulations">Exploring the Central Limit Theorem through simulations</h1>
+<h2 id="1-simulating-population-distributions">1. Simulating Population Distributions</h2>
+<h4 id="1-uniform-distribution">1. Uniform Distribution</h4>
+<div class="arithmatex">\[ X \sim \text{Uniform}(a, b) \]</div>
+<h4 id="2-pdf">2. PDF:</h4>
+<div class="arithmatex">\[ f_X(x) = \frac{1}{b - a}, \quad a \leq x \leq b \]</div>
+<h4 id="3-mean">3. Mean:</h4>
+<div class="arithmatex">\[ \mu = \frac{a + b}{2} \]</div>
+<h4 id="4-variance">4. Variance:</h4>
+<div class="arithmatex">\[ \sigma^2 = \frac{(b - a)^2}{12} \]</div>
+<h4 id="5-exponential-distribution">5. Exponential Distribution</h4>
+<div class="arithmatex">\[ X \sim \text{Exponential}(\lambda) \]</div>
+<h4 id="6-pdf">6. PDF:</h4>
+<div class="arithmatex">\[ f_X(x) = \lambda e^{-\lambda x}, \quad x \geq 0 \]</div>
+<h4 id="7-mean">7. Mean:</h4>
+<div class="arithmatex">\[ \mu = \frac{1}{\lambda} \]</div>
+<h4 id="8-variance">8. Variance:</h4>
+<div class="arithmatex">\[ \sigma^2 = \frac{1}{\lambda^2} \]</div>
+<h4 id="9-binomial-distribution">9. Binomial Distribution</h4>
+<div class="arithmatex">\[ X \sim \text{Binomial}(n, p) \]</div>
+<h4 id="10-pmf">10. PMF:</h4>
+<div class="arithmatex">\[ P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}, \quad k = 0, 1, \ldots, n \]</div>
+<h4 id="11-mean">11. Mean:</h4>
+<div class="arithmatex">\[ \mu = n p \]</div>
+<h4 id="12-variance">12. Variance:</h4>
+<div class="arithmatex">\[ \sigma^2 = n p (1 - p) \]</div>
+<p>For each distribution, generate a large "population" sample of size <span class="arithmatex">\( N = 100,000 \)</span>.</p>
+<h2 id="2-sampling-visualization">2. Sampling &amp; Visualization</h2>
+<ol>
+<li><strong>Draw Random Samples</strong><br/>
+   For each population, and for each sample size <span class="arithmatex">\(n\in\{5,10,30,50\}\)</span>:</li>
+<li>Repeat <span class="arithmatex">\(M = 1000\)</span> times:<ol>
+<li>Take a random sample <span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span>.</li>
+<li>Compute the sample mean<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i.\)</span>\)</span></li>
+</ol>
+</li>
+<li>
+<p>Collect the <span class="arithmatex">\(M\)</span> values of <span class="arithmatex">\(\bar{X}\)</span> to form the <strong>sampling distribution</strong> of the mean.</p>
+</li>
+<li>
+<p><strong>Plot Histograms</strong> </p>
+</li>
+<li>For each <span class="arithmatex">\(n\)</span>, plot a histogram of the <span class="arithmatex">\(M\)</span> sample means.</li>
+<li>Overlay the Normal PDF with parameters<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\mu_{\bar X} = \mu,\quad \sigma_{\bar X} = \frac{\sigma}{\sqrt{n}}.\)</span>\)</span></li>
+<li>Observe how, as <span class="arithmatex">\(n\)</span> increases, the histogram approaches<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\bar{X} \ \xrightarrow{d}\ \mathcal{N}\!\Bigl(\mu,\,\tfrac{\sigma^2}{n}\Bigr).\)</span>\)</span></li>
+</ol>
+<hr/>
+<h2 id="3-parameter-exploration">3. Parameter Exploration</h2>
+<ul>
+<li><strong>Shape of Original Distribution</strong> </li>
+<li><strong>Skewed</strong> distributions (e.g., Exponential) require larger <span class="arithmatex">\(n\)</span> before the sampling distribution appears Normal.</li>
+<li>
+<p><strong>Symmetric</strong> distributions (e.g., Uniform) converge more quickly.</p>
+</li>
+<li>
+<p><strong>Effect of Variance</strong> </p>
+</li>
+<li>A larger population variance <span class="arithmatex">\(\sigma^2\)</span> yields a wider sampling distribution:
+    <span class="arithmatex">\(<span class="arithmatex">\(\mathrm{Var}(\bar{X}) = \frac{\sigma^2}{n}.\)</span>\)</span></li>
+<li>
+<p>Doubling <span class="arithmatex">\(\sigma^2\)</span> doubles the spread of <span class="arithmatex">\(\bar{X}\)</span>, but increasing <span class="arithmatex">\(n\)</span> reduces spread by <span class="arithmatex">\(1/n\)</span>.</p>
+</li>
+<li>
+<p><strong>Rate of Convergence</strong> </p>
+</li>
+<li>For distributions with <strong>finite</strong> higher moments, the Berry–Esseen theorem gives a bound on the convergence rate:
+    <span class="arithmatex">\(<span class="arithmatex">\(\sup_x \Bigl| F_n(x) - \Phi(x)\Bigr| \le \frac{C\,\rho}{\sigma^3\sqrt{n}},\)</span>\)</span><br/>
+    where <span class="arithmatex">\(\rho = \mathbb{E}\!\bigl|X - \mu\bigr|^3\)</span> and <span class="arithmatex">\(C\)</span> is a constant.</li>
+</ul>
+<hr/>
+<h2 id="4-practical-applications-of-the-clt">4. Practical Applications of the CLT</h2>
+<ol>
+<li><strong>Estimating Population Parameters</strong> </li>
+<li>
+<p>Confidence intervals for a population mean use<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(\bar{X} \pm z_{\,\alpha/2}\,\frac{\sigma}{\sqrt{n}}.\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Quality Control in Manufacturing</strong> </p>
+</li>
+<li>
+<p>Monitor sample means of product dimensions to detect shifts from target:
+     $$ \bar{X} \sim \mathcal{N}!\Bigl(\mu_0,\tfrac{\sigma^2}{n}\Bigr). $$</p>
+</li>
+<li>
+<p><strong>Financial Modeling</strong> </p>
+</li>
+<li>Aggregated returns over many assets or time intervals often assumed Normally distributed:
+     $$ R = \sum_{i=1}^n r_i,\quad r_i\sim\text{IID}, $$
+     so by CLT,<br/>
+     $$ R \approx \mathcal{N}!\bigl(n\mu,\;n\sigma^2\bigr). $$</li>
+</ol>
+<p><img alt="alt text" src="image-0.png"/>
+<img alt="alt text" src="image-1.png"/>
+<img alt="alt text" src="image-2.png"/>
+<img alt="alt text" src="image-3.png"/>
+<img alt="alt text" src="image-4.png"/>
+<img alt="alt text" src="image-5.png"/>
+<img alt="alt text" src="image-6.png"/>
+<img alt="alt text" src="image-7.png"/></p>
+<h2 id="animation">Animation</h2>
+<p><img alt="alt text" src="../Animation%20statistics%201.gif"/></p>
+<p><img alt="alt text" src="ScreenRecording2025-05-22091548-ezgif.com-video-to-gif-converter.gif"/></p>
+<p><img alt="alt text" src="image-8.png"/>
+<img alt="alt text" src="image-9.png"/>
+<img alt="alt text" src="image-10.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
