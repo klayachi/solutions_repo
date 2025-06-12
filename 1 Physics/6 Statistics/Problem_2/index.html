@@ -173,7 +173,7 @@
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
 <h1 id="estimating-pi-using-monte-carlo-methods">Estimating <span class="arithmatex">\(\pi\)</span> using Monte Carlo Methods</h1>
-<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
+<h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
 <p>To estimate <span class="arithmatex">\(\pi\)</span> using random points, consider a unit circle inscribed in a square. The circle has a radius <span class="arithmatex">\(r = 1\)</span>, and the square spans from <span class="arithmatex">\(-1\)</span> to <span class="arithmatex">\(1\)</span> in both <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> directions.</p>
 <p>The area of the unit circle is:</p>
 <div class="arithmatex">\[
@@ -189,10 +189,9 @@ P = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
 \]</div>
 <p>Solving for <span class="arithmatex">\(\pi\)</span> gives:</p>
 <div class="arithmatex">\[
-\pi \approx 4 \cdot \frac{\text{Number of points inside the circle}}{\text{Total number of points}}
+\pi \approx 4 \cdot \frac{N_{\text{inside}}}{N_{\text{total}}}
 \]</div>
-<hr/>
-<h2 id="2-simulation">2. Simulation</h2>
+<h3 id="2-simulation">2. Simulation</h3>
 <ol>
 <li>Generate <span class="arithmatex">\(N\)</span> random points <span class="arithmatex">\((x, y)\)</span> in the square <span class="arithmatex">\([-1, 1] \times [-1, 1]\)</span>.</li>
 <li>Count how many fall inside the unit circle (i.e., those satisfying <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>).</li>
@@ -201,8 +200,7 @@ P = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
 <div class="arithmatex">\[
 \pi \approx 4 \cdot \frac{N_{\text{inside}}}{N_{\text{total}}}
 \]</div>
-<hr/>
-<h2 id="3-visualization">3. Visualization</h2>
+<h3 id="3-visualization">3. Visualization</h3>
 <p>A plot can show:</p>
 <ul>
 <li>Points <strong>inside</strong> the circle in <strong>blue</strong></li>
@@ -210,9 +208,7 @@ P = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
 <li>The <strong>unit circle</strong> boundary</li>
 </ul>
 <p>This visually demonstrates how random sampling approximates the circle's area.</p>
-<p><img alt="alt text" src="pi_convergence_plot.png"/></p>
-<hr/>
-<h2 id="4-analysis">4. Analysis</h2>
+<h3 id="4-analysis">4. Analysis</h3>
 <ul>
 <li>As <span class="arithmatex">\(N \rightarrow \infty\)</span>, the estimate of <span class="arithmatex">\(\pi\)</span> converges to the true value.</li>
 <li>The convergence rate is <span class="arithmatex">\(O(1/\sqrt{N})\)</span>, typical for Monte Carlo methods.</li>
@@ -220,20 +216,80 @@ P = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
 <li>Monte Carlo integration is simple but computationally inefficient compared to analytical methods.</li>
 </ul>
 <hr/>
-<h2 id="summary">Summary</h2>
-<p>This method:
-- Is easy to implement.
-- Demonstrates probabilistic estimation.
-- Converges slowly (requires a lot of points for high precision).
-- Visualizes the randomness and convergence beautifully.</p>
-<hr/>
-<h2 id="formula-recap">Formula Recap</h2>
+<h2 id="part-2-estimating-pi-using-buffons-needle">Part 2: Estimating <span class="arithmatex">\(\pi\)</span> Using Buffon’s Needle</h2>
+<h3 id="1-theoretical-foundation_1">1. Theoretical Foundation</h3>
+<p>Buffon's Needle is a probability problem: Drop a needle of length <span class="arithmatex">\(L\)</span> onto a plane with parallel lines spaced a distance <span class="arithmatex">\(d\)</span> apart (<span class="arithmatex">\(L \leq d\)</span>). The probability that the needle crosses a line is:</p>
 <div class="arithmatex">\[
-\pi \approx 4 \cdot \frac{N_{\text{in}}}{N_{\text{total}}}
+P = \frac{2L}{\pi d}
+\]</div>
+<p>Rearranging to estimate <span class="arithmatex">\(\pi\)</span>:</p>
+<div class="arithmatex">\[
+\pi \approx \frac{2L \cdot N_{\text{total}}}{d \cdot N_{\text{cross}}}
 \]</div>
 <p>Where:
-- <span class="arithmatex">\(N_{\text{in}}\)</span> = number of points inside the circle
-- <span class="arithmatex">\(N_{\text{total}}\)</span> = total number of points sampled</p>
+- <span class="arithmatex">\(N_{\text{total}}\)</span> = total number of needle drops
+- <span class="arithmatex">\(N_{\text{cross}}\)</span> = number of times the needle crosses a line</p>
+<h3 id="2-simulation_1">2. Simulation</h3>
+<ol>
+<li>Randomly simulate dropping a needle:</li>
+<li>Random angle <span class="arithmatex">\(\theta \in [0, \pi]\)</span></li>
+<li>Random distance from center to nearest line <span class="arithmatex">\(x \in [0, d/2]\)</span></li>
+<li>The needle crosses a line if:</li>
+</ol>
+<div class="arithmatex">\[
+x \leq \frac{L}{2} \sin(\theta)
+\]</div>
+<ol>
+<li>Count the number of crossings and estimate <span class="arithmatex">\(\pi\)</span>:</li>
+</ol>
+<div class="arithmatex">\[
+\pi \approx \frac{2L \cdot N_{\text{total}}}{d \cdot N_{\text{cross}}}
+\]</div>
+<h3 id="3-visualization_1">3. Visualization</h3>
+<p>A diagram should show:</p>
+<ul>
+<li>Horizontal parallel lines spaced at distance <span class="arithmatex">\(d\)</span></li>
+<li>Needles randomly placed, with crossing ones in a distinct color</li>
+<li>This illustrates the relationship between geometry and probability</li>
+</ul>
+<h3 id="4-analysis_1">4. Analysis</h3>
+<ul>
+<li>Like the circle method, this converges slowly: <span class="arithmatex">\(O(1/\sqrt{N})\)</span></li>
+<li>More complex to implement due to trigonometric calculations</li>
+<li>It offers historical and theoretical interest but is less practical for accurate estimation of <span class="arithmatex">\(\pi\)</span></li>
+<li>For small numbers of trials, the result is very noisy</li>
+</ul>
+<hr/>
+<h2 id="comparison-of-methods">Comparison of Methods</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Convergence Rate</th>
+<th>Complexity</th>
+<th>Practicality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monte Carlo Circle</td>
+<td><span class="arithmatex">\(O(1/\sqrt{N})\)</span></td>
+<td>Easy</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Buffon’s Needle</td>
+<td><span class="arithmatex">\(O(1/\sqrt{N})\)</span></td>
+<td>Moderate</td>
+<td>Moderate</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="animation-1">Animation 1</h2>
+<h2 id="animation-2">Animation 2</h2>
+<h2 id="animation-3">Animation 3</h2>
+<h2 id="using-buffons-needle">Using Buffon’s Needle</h2>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
