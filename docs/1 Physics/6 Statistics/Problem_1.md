@@ -108,6 +108,4 @@ For each distribution, generate a large "population" sample of size \( N = 100,0
 ## Animation
 
 ![alt text](<Animation statistics 1.gif>)
-![alt text](image-8.png)
-![alt text](image-9.png)
-![alt text](image-10.png)
+![alt text](ScreenRecording2025-05-22091548-ezgif.com-video-to-gif-converter.gif)
