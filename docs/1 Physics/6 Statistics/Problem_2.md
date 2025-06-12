@@ -125,15 +125,14 @@ A diagram should show:
 
 ## Animation 1
 
-
+![alt text](download2-ezgif.com-video-to-gif-converter.gif)
 
 ## Animation 2
 
-
-## Animation 3
-
-
+![alt text](ScreenRecording2025-05-22095607-ezgif.com-video-to-gif-converter.gif)
 
 ## Using Buffon’s Needle
 
+![alt text](ScreenRecording2025-05-22162411-ezgif.com-video-to-gif-converter.gif)
 
+![alt text](image-15.png)
