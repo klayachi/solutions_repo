@@ -6,16 +6,13 @@ This experiment estimates the acceleration due to gravity $g$ using a simple pen
 
 # Pendulum Measurement Report
 
-<video controls>
-  <source src="trial_1.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![alt text](<trial_1-ezgif.com-speed (1).gif>)
 
 ## Materials and Tools
 - Necklace (used as pendulum string)  
 - Keychain or small pendant as mass  
 - Ruler (uncertainty: ±1 mm)  
-- Smartphone stopwatch  
+- Smartphone stopwatch 
 
 ---
 
