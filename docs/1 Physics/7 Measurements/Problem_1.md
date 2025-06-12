@@ -6,7 +6,7 @@ This experiment estimates the acceleration due to gravity $g$ using a simple pen
 
 # Pendulum Measurement Report
 
-<video controls src="Trial 1.mp4" title="Title"></video>
+<video controls src="Trial 1.mp4" title="Title"></video> 
 
 ## Materials and Tools
 - Necklace (used as pendulum string)  
@@ -90,13 +90,13 @@ The experimental value $g = 8.97\ \text{m/s}^2$ is reasonably close to the stand
 
 Simulated side-view of the pendulum using your measured length ($0.28\ \text{m}$):
 
-![Pendulum Swing](pendulum_swing.gif)
+![alt text](pendulum_swing.gif)
 
 ### Oscillation Timer (10 Periods)
 
 Each bar represents one full swing, aligned with your stopwatch readings:
 
-![Oscillation Timer](oscillation_timer.gif)
+![alt text](oscillation_timer.gif)
 
 ---
 
@@ -116,7 +116,7 @@ $$
 
 This graph plots gravitational acceleration for a range of lengths to validate the equation behavior near your measured range:
 
-![alt text](compare_g_measured_vs_standard-1.png)
+![alt text](compare_g_measured_vs_standard.png)
 
 ---
 
