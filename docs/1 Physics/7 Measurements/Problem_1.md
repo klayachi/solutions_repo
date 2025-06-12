@@ -112,9 +112,9 @@ $$
 
 ## Visual Data Analysis
 
-### Graph: Measured $g$ vs Pendulum Length
+### Graph: Measured $g$ vs standard $g$
 
-This graph plots gravitational acceleration for a range of lengths to validate the equation behavior near your measured range:
+Here is the comparison image showing your measured gravitational acceleration (8.97 m/s²) versus the standard value (9.81 m/s²):
 
 ![alt text](compare_g_measured_vs_standard.png)
 
