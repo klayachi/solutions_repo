@@ -172,6 +172,143 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth's Gravitational Acceleration with a Pendulum</h1>
+<p>This experiment estimates the acceleration due to gravity <span class="arithmatex">\(g\)</span> using a simple pendulum by analyzing the period of its oscillation and the pendulum's length.</p>
+<h1 id="pendulum-measurement-report">Pendulum Measurement Report</h1>
+<video controls="" src="Trial 1.mp4" title="Title"></video>
+<h2 id="materials-and-tools">Materials and Tools</h2>
+<ul>
+<li>Necklace (used as pendulum string)  </li>
+<li>Keychain or small pendant as mass  </li>
+<li>Ruler (uncertainty: ±1 mm)  </li>
+<li>Smartphone stopwatch  </li>
+</ul>
+<hr/>
+<h2 id="pendulum-length">Pendulum Length</h2>
+<ul>
+<li><strong>Measured Length:</strong> <span class="arithmatex">\(L = 0.280\ \text{m}\)</span></li>
+<li><strong>Uncertainty:</strong> <span class="arithmatex">\(\Delta L = \pm 0.001\ \text{m}\)</span></li>
+</ul>
+<hr/>
+<h2 id="time-measurements-for-10-oscillations">Time Measurements for 10 Oscillations</h2>
+<table>
+<thead>
+<tr>
+<th>Trial</th>
+<th>Time (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>11.59</td>
+</tr>
+<tr>
+<td>2</td>
+<td>11.23</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11.34</td>
+</tr>
+<tr>
+<td>4</td>
+<td>11.56</td>
+</tr>
+<tr>
+<td>5</td>
+<td>11.67</td>
+</tr>
+<tr>
+<td>6</td>
+<td>11.56</td>
+</tr>
+<tr>
+<td>7</td>
+<td>11.58</td>
+</tr>
+<tr>
+<td>8</td>
+<td>11.27</td>
+</tr>
+<tr>
+<td>9</td>
+<td>11.46</td>
+</tr>
+<tr>
+<td>10</td>
+<td>11.34</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="calculations">Calculations</h2>
+<h3 id="mean-time-for-10-oscillations">Mean Time for 10 Oscillations</h3>
+<div class="arithmatex">\[
+\bar{T}_{10} = \frac{\sum T_i}{10} = \frac{114.6}{10} = 11.46\ \text{s}
+\]</div>
+<h3 id="mean-time-for-1-oscillation">Mean Time for 1 Oscillation</h3>
+<div class="arithmatex">\[
+\bar{T} = \frac{\bar{T}_{10}}{10} = 1.146\ \text{s}
+\]</div>
+<h3 id="experimental-value-of-gravitational-acceleration">Experimental Value of Gravitational Acceleration</h3>
+<p>Using:
+$$
+T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow g = \frac{4\pi^2 L}{T^2}
+$$</p>
+<p>Substitute:
+$$
+g = \frac{4\pi^2 \cdot 0.280}{(1.146)^2} = 8.97\ \text{m/s}^2
+$$</p>
+<hr/>
+<h2 id="uncertainty-and-error">Uncertainty and Error</h2>
+<ul>
+<li>
+<p>Time uncertainty (range method):<br/>
+$$
+\Delta T_{10} = \frac{11.67 - 11.23}{2} = 0.22\ \text{s} \Rightarrow \Delta T = \frac{0.22}{10} = 0.022\ \text{s}
+$$</p>
+</li>
+<li>
+<p>Propagated uncertainty:
+$$
+\Delta g = g \cdot \sqrt{ \left(\frac{\Delta L}{L}\right)^2 + \left(2\cdot\frac{\Delta T}{T}\right)^2 }
+$$</p>
+</li>
+</ul>
+<hr/>
+<h2 id="conclusion">Conclusion</h2>
+<p>The experimental value <span class="arithmatex">\(g = 8.97\ \text{m/s}^2\)</span> is reasonably close to the standard <span class="arithmatex">\(g = 9.81\ \text{m/s}^2\)</span>, with an error margin of approximately 8.6%. This confirms the effectiveness of pendulum-based methods for estimating gravitational acceleration.</p>
+<hr/>
+<h2 id="experimental-setup-and-visuals">Experimental Setup and Visuals</h2>
+<h3 id="pendulum-swing-simulation">Pendulum Swing Simulation</h3>
+<p>Simulated side-view of the pendulum using your measured length (<span class="arithmatex">\(0.28\ \text{m}\)</span>):</p>
+<p><img alt="Pendulum Swing" src="pendulum_swing.gif"/></p>
+<h3 id="oscillation-timer-10-periods">Oscillation Timer (10 Periods)</h3>
+<p>Each bar represents one full swing, aligned with your stopwatch readings:</p>
+<p><img alt="Oscillation Timer" src="oscillation_timer.gif"/></p>
+<hr/>
+<h2 id="theoretical-background">Theoretical Background</h2>
+<p>Assuming small-angle approximation:</p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{L}{g}} \Rightarrow g = \frac{4\pi^2 L}{T^2}
+\]</div>
+<hr/>
+<h2 id="visual-data-analysis">Visual Data Analysis</h2>
+<h3 id="graph-measured-g-vs-pendulum-length">Graph: Measured <span class="arithmatex">\(g\)</span> vs Pendulum Length</h3>
+<p>This graph plots gravitational acceleration for a range of lengths to validate the equation behavior near your measured range:</p>
+<p><img alt="alt text" src="compare_g_measured_vs_standard-1.png"/></p>
+<hr/>
+<h2 id="discussion">Discussion</h2>
+<ul>
+<li>Deviations from <span class="arithmatex">\(g_{\text{standard}} = 9.81\ \text{m/s}^2\)</span> may result from:</li>
+<li>Slight deviation in initial angle from ideal small-angle assumption</li>
+<li>Timing human reaction delay</li>
+<li>Air resistance and friction at pivot point</li>
+</ul>
+<hr/>
+<h2 id="conclusion_1">Conclusion</h2>
+<p>This experiment demonstrated a reliable method of estimating Earth's gravitational acceleration with household tools. Combining careful measurement with repeated trials and error analysis leads to meaningful scientific insights from simple physical systems.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
