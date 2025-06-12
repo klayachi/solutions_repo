@@ -6,7 +6,7 @@ This experiment estimates the acceleration due to gravity $g$ using a simple pen
 
 # Pendulum Measurement Report
 
-
+![alt text](<trial_1-ezgif.com-speed (1).gif>)
 
 ## Materials and Tools
 - Necklace (used as pendulum string)  
