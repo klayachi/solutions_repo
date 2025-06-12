@@ -172,6 +172,68 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="estimating-pi-using-monte-carlo-methods">Estimating <span class="arithmatex">\(\pi\)</span> using Monte Carlo Methods</h1>
+<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
+<p>To estimate <span class="arithmatex">\(\pi\)</span> using random points, consider a unit circle inscribed in a square. The circle has a radius <span class="arithmatex">\(r = 1\)</span>, and the square spans from <span class="arithmatex">\(-1\)</span> to <span class="arithmatex">\(1\)</span> in both <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span> directions.</p>
+<p>The area of the unit circle is:</p>
+<div class="arithmatex">\[
+A_{\text{circle}} = \pi r^2 = \pi
+\]</div>
+<p>The area of the square is:</p>
+<div class="arithmatex">\[
+A_{\text{square}} = (2r)^2 = 4
+\]</div>
+<p>If we randomly generate points uniformly within the square, the probability that a point lies inside the circle is:</p>
+<div class="arithmatex">\[
+P = \frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
+\]</div>
+<p>Solving for <span class="arithmatex">\(\pi\)</span> gives:</p>
+<div class="arithmatex">\[
+\pi \approx 4 \cdot \frac{\text{Number of points inside the circle}}{\text{Total number of points}}
+\]</div>
+<hr/>
+<h2 id="2-simulation">2. Simulation</h2>
+<ol>
+<li>Generate <span class="arithmatex">\(N\)</span> random points <span class="arithmatex">\((x, y)\)</span> in the square <span class="arithmatex">\([-1, 1] \times [-1, 1]\)</span>.</li>
+<li>Count how many fall inside the unit circle (i.e., those satisfying <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>).</li>
+<li>Estimate <span class="arithmatex">\(\pi\)</span> using:</li>
+</ol>
+<div class="arithmatex">\[
+\pi \approx 4 \cdot \frac{N_{\text{inside}}}{N_{\text{total}}}
+\]</div>
+<hr/>
+<h2 id="3-visualization">3. Visualization</h2>
+<p>A plot can show:</p>
+<ul>
+<li>Points <strong>inside</strong> the circle in <strong>blue</strong></li>
+<li>Points <strong>outside</strong> the circle in <strong>red</strong></li>
+<li>The <strong>unit circle</strong> boundary</li>
+</ul>
+<p>This visually demonstrates how random sampling approximates the circle's area.</p>
+<p><img alt="alt text" src="pi_convergence_plot.png"/></p>
+<hr/>
+<h2 id="4-analysis">4. Analysis</h2>
+<ul>
+<li>As <span class="arithmatex">\(N \rightarrow \infty\)</span>, the estimate of <span class="arithmatex">\(\pi\)</span> converges to the true value.</li>
+<li>The convergence rate is <span class="arithmatex">\(O(1/\sqrt{N})\)</span>, typical for Monte Carlo methods.</li>
+<li>Accuracy increases slowly, so large numbers of samples are needed for high precision.</li>
+<li>Monte Carlo integration is simple but computationally inefficient compared to analytical methods.</li>
+</ul>
+<hr/>
+<h2 id="summary">Summary</h2>
+<p>This method:
+- Is easy to implement.
+- Demonstrates probabilistic estimation.
+- Converges slowly (requires a lot of points for high precision).
+- Visualizes the randomness and convergence beautifully.</p>
+<hr/>
+<h2 id="formula-recap">Formula Recap</h2>
+<div class="arithmatex">\[
+\pi \approx 4 \cdot \frac{N_{\text{in}}}{N_{\text{total}}}
+\]</div>
+<p>Where:
+- <span class="arithmatex">\(N_{\text{in}}\)</span> = number of points inside the circle
+- <span class="arithmatex">\(N_{\text{total}}\)</span> = total number of points sampled</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
