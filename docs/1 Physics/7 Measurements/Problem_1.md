@@ -132,3 +132,7 @@ Here is the comparison image showing your measured gravitational acceleration (8
 ## Conclusion
 
 This experiment demonstrated a reliable method of estimating Earth's gravitational acceleration with household tools. Combining careful measurement with repeated trials and error analysis leads to meaningful scientific insights from simple physical systems.
+
+![alt text](image.png)
+
+![alt text](ScreenRecording2025-05-24100306-ezgif.com-video-to-gif-converter.gif)
